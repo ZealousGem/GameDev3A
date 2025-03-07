@@ -28,6 +28,7 @@ public class CheckpointManager : MonoBehaviour
         if (checkpoint ==checkpointStack.Peek())
         {
             checkpointStack.Pop();
+            Debug.Log("checkpoint reached:" + checkpoint.name);
             Destroy(checkpoint.gameObject);
 
         }

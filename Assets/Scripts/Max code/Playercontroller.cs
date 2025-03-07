@@ -25,7 +25,7 @@ public class Playercontroller : MonoBehaviour
         float moveInput = Input.GetAxis("Vertical");
         float turnInput = Input.GetAxis("Horizontal");
 
-        Debug.Log("Move Input: " + moveInput + ", Turn Input: " + turnInput);
+        //Debug.Log("Move Input: " + moveInput + ", Turn Input: " + turnInput);
 
         inputDirection = transform.forward * moveInput * acceleration;
         transform.Rotate(Vector3.up * turnInput * turnSpeed * Time.deltaTime);
@@ -37,7 +37,7 @@ public class Playercontroller : MonoBehaviour
         if (moveInput != 0)
         {
             rb.velocity = transform.forward * moveInput * maxSpeed;
-            Debug.Log("Applying Force: " + inputDirection);
+            //Debug.Log("Applying Force: " + inputDirection);
         }
 
         //rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);

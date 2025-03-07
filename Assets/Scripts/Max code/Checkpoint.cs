@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    private CheckpointManager manager;
+    public CheckpointManager manager;
     // Start is called before the first frame update
     void Start()
     {
-        manager = GetComponent<CheckpointManager>();
+        manager = FindObjectOfType<CheckpointManager>();
         
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("Player"))
         {
             manager.CheckpointReached(transform);
         }
