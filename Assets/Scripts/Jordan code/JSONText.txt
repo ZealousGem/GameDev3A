@@ -1,0 +1,31 @@
+{
+
+"Characters": [
+{
+  "name": "John",
+   "data" :[
+   
+  { "Text": "Hello"},
+   {"Text": "How are you my name is dickhead"},
+   {"Text": "you look gay"}
+   
+   ]
+
+},
+
+{
+  "name": "PepeMan",
+  "data":[
+   
+   {"Text": "Hello gay"},
+   {"Text": "You FUcking Suck Dickhead"}
+   
+   
+      ]
+
+    }
+
+
+  ]
+ 
+}
