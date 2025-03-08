@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,19 +11,30 @@ public class DialogueInfo : MonoBehaviour
    public DialogueData DialogueData= new DialogueData();
     public void Start()
     {
-        LoadData();
+       // LoadData();
     }
-    public void LoadData()
+    public IEnumerator LoadData()
     {
         string filepath = "Assets/Assets/StreamingAssets/JSONText.txt";
          // string filepath = Application.streamingAssetsPath + "/JSONText.txt";
      //   string filepath = Resources.Load<TextAsset>("");
+
+        
         if (File.Exists(filepath))
         {
             string DialogueD = System.IO.File.ReadAllText(filepath);
+            // uses a couritne to load data so it isn't null errored
+            
+            if (!string.IsNullOrEmpty(DialogueD))
+            {
+                DialogueData = JsonUtility.FromJson<DialogueData>(DialogueD); // converts the json data to the variables in dialogueData
+                Debug.Log("successfully loaded");
+            }
 
-            DialogueData = JsonUtility.FromJson<DialogueData>(DialogueD);
-            Debug.Log("successfully loaded");
+            else
+            {
+                Debug.Log("Dialogue data successfully loaded.");
+            }
 
         }
 
@@ -30,8 +42,12 @@ public class DialogueInfo : MonoBehaviour
         {
             Debug.Log("File is missing");
         }
+
+        yield return null;
         
     }
+
+    
 
 }
 
