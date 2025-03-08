@@ -14,8 +14,9 @@ public class DialogueInfo : MonoBehaviour
     }
     public void LoadData()
     {
-        string filepath = "D:\\GitShit\\GameDevRaceGame\\GameDev3A\\Assets\\Scripts\\Jordan code\\JSONText.txt";
-        // string filepath = Application.persistentDataPath + "/JSONText.txt";
+        string filepath = "Assets/Assets/StreamingAssets/JSONText.txt";
+         // string filepath = Application.streamingAssetsPath + "/JSONText.txt";
+     //   string filepath = Resources.Load<TextAsset>("");
         if (File.Exists(filepath))
         {
             string DialogueD = System.IO.File.ReadAllText(filepath);
