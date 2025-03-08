@@ -771,6 +771,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   start: {fileID: 2142049452}
+  name:
+  - John
+  - PepeMan
   info: {fileID: 1076172307}
 --- !u!114 &1076172307
 MonoBehaviour:

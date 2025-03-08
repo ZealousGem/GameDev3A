@@ -15,7 +15,7 @@ public class DialogueInfo : MonoBehaviour
     }
     public IEnumerator LoadData()
     {
-        string filepath = "Assets/Assets/StreamingAssets/JSONText.txt";
+        string filepath = "Assets/Assets/StreamingAssets/JSONText.txt"; // the location of the json file
          // string filepath = Application.streamingAssetsPath + "/JSONText.txt";
      //   string filepath = Resources.Load<TextAsset>("");
 
@@ -52,11 +52,11 @@ public class DialogueInfo : MonoBehaviour
 }
 
 
-
+// variables that will be used to catch the data in the JSON File
 [System.Serializable]
 public class DialogueData
 {
-    public List<People> Characters;
+    public List<People> Characters; // this is so we can add more than one character in the dialougue 
 }
 
 
@@ -64,7 +64,7 @@ public class DialogueData
 public class People
 {
     public string name;
-    public List<DialogueLines> data;
+    public List<DialogueLines> data; // this is made so there can be many dialogue for the character to speak and it can contain many strings instead of one
 }
 
 [System.Serializable]

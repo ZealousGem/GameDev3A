@@ -40,16 +40,16 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator Dialogue()
     {
-        for (int i = 0; i < name.Length; i++)
+        for (int i = 0; i < name.Length; i++) // this will be made so many different characters can speak to each other
         {
             //start = GetComponents<DialogueSystem>();
             start.StartDialogue(name[i]);
             Debug.Log(i);
-            while (!start.end)
+            while (!start.end) // if the end bool is still false this will freeze the loop so the Queue can finish in DialogueSystem
             {
                 yield return null;
             }
-            start.end = true;
+            start.end = true; // if true the next character will speak 
         }
         
     }
