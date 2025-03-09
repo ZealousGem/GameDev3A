@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DialogueSystem : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Queue<string> lines;
+    private CustomQueue<string> lines;
     public List<string> login;
     public Text Charname;
     public string nameDisplay;
@@ -17,7 +17,7 @@ public class DialogueSystem : MonoBehaviour
     public DialogueInfo info;
     private void Start()
     {
-        lines = new Queue<string>(); // creates a Queue string for the dialogue 
+        lines = new CustomQueue<string>(); // creates a Queue string for the dialogue 
         end = true;
 
         if (info == null)
