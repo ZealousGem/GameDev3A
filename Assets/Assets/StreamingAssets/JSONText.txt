@@ -6,8 +6,8 @@
    "data" :[
    
   { "Text": "Hello"},
-   {"Text": "How are you, my name is dickhead"},
-   {"Text": "you look gay"}
+   {"Text": "I am John"},
+   {"Text": "Nice to meet you"}
    
    ]
 
@@ -17,8 +17,8 @@
   "name": "PepeMan",
   "data":[
    
-   {"Text": "Hello gay"},
-   {"Text": "You FUcking Suck Dickhead"}
+   {"Text": "Hello John"},
+   {"Text": "My name is PepeMan, nice to meet you"}
    
    
       ]

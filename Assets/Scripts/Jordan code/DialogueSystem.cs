@@ -7,14 +7,16 @@ public class DialogueSystem : MonoBehaviour
 {
     // Start is called before the first frame update
     private CustomQueue<string> lines;
+    public GameObject Dialogue;
     public List<string> login;
     public Text Charname;
-    public string nameDisplay;
+    string nameDisplay;
     string colon = ":";
     public Text description;
     public int counter = 0;
     public bool end;
-    public DialogueInfo info;
+    public float Speed;
+    DialogueInfo info;
     private void Start()
     {
         lines = new CustomQueue<string>(); // creates a Queue string for the dialogue 
@@ -37,6 +39,7 @@ public class DialogueSystem : MonoBehaviour
     {
         // character.SetActive(true); 
         //Debug.Log("working");
+        Dialogue.SetActive(true);
         end = false;
         People characterD = info.DialogueData.Characters.Find(Characters => Characters.name == ChacterName); // this will create a character object and will instatite with the data from the josn file
         if (characterD != null)
@@ -77,10 +80,21 @@ public class DialogueSystem : MonoBehaviour
         }
         string sentence = lines.Dequeue(); // everytime the diplsay is pressed the element in front will be removed and makes the element behind in fron of the Queue
         // Debug.Log(sentence);
-        description.text = sentence; 
+        //description.text = sentence; 
+        StartCoroutine(TypeDialogue(sentence));
         login.Add(sentence);
         counter += 1;
 
+    }
+
+    public IEnumerator TypeDialogue(string sentence)
+    {
+        description.text = "";
+        foreach (var T in sentence.ToCharArray())
+        {
+            description.text += T;
+            yield return new WaitForSeconds(0.03f);
+        }
     }
 
     void EndDialogue() // will end the dialogue by setting bool to false allowing the for loop in dialogue manager to move the i to the next position
@@ -90,8 +104,11 @@ public class DialogueSystem : MonoBehaviour
         description.text = "";
         end = true;
         counter = 0;
+        login.Clear();
+        Dialogue.SetActive(false);
     }
 
-   
+    
+
 
 }
