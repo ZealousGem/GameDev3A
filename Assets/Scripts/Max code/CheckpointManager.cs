@@ -5,6 +5,9 @@ using UnityEngine;
 public class CheckpointManager : MonoBehaviour
 {
 
+    public RaceTimer raceTimer;
+    public float timeBonus = 5f;
+
     public List<Transform> CheckpointTransforms;
     private CustomStack<Transform> checkpointStack;
     // Start is called before the first frame update
