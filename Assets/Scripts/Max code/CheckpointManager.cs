@@ -10,6 +10,8 @@ public class CheckpointManager : MonoBehaviour
 
     public List<Transform> CheckpointTransforms;
     private CustomStack<Transform> checkpointStack;
+    private Transform currentCheckpoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +21,29 @@ public class CheckpointManager : MonoBehaviour
         {
             checkpointStack.Push(CheckpointTransforms[i]);
         }
-        
+        SetNextCheckpoint();
+
     }
+    void SetNextCheckpoint()
+    {
+        if (!checkpointStack.IsEmpty())
+        {
+            currentCheckpoint = checkpointStack.Peek();
+            HighlightCheckpoint(currentCheckpoint, Color.green);
+        }
+        else
+        {
+            Debug.Log(" Race Completed!");
+            raceTimer.raceActive = false;
+
+        }
+
+    }
+
     public Transform GetNextCheckpoint()
     {
-        return checkpointStack.Peek();
+        return currentCheckpoint;
+        
     }
 
     public void CheckpointReached(Transform checkpoint)
@@ -32,7 +52,15 @@ public class CheckpointManager : MonoBehaviour
         {
             checkpointStack.Pop();
             Debug.Log("checkpoint reached:" + checkpoint.name);
+
+
+            raceTimer.AddTime(timeBonus);
+
+            HighlightCheckpoint(checkpoint, Color.gray);
+
             Destroy(checkpoint.gameObject);
+
+            SetNextCheckpoint();
 
         }
         if (checkpointStack.IsEmpty())
@@ -40,6 +68,15 @@ public class CheckpointManager : MonoBehaviour
             Debug.Log("race complete");
         }
 
+    }
+    void HighlightCheckpoint(Transform checkpoint, Color color)
+    {
+        Renderer checkpointRenderer = checkpoint.GetComponent<Renderer>();
+        if (checkpointRenderer )
+        {
+            checkpointRenderer.material.color = color;
+
+        }
     }
 
     // Update is called once per frame
