@@ -8,6 +8,7 @@ public class Playercontroller : MonoBehaviour
     public float acceleration = 1;
     public float maxSpeed = 20;
     public float turnSpeed = 100;
+    public float deceleration = 5f;
 
     public Rigidbody rb;
     private Vector3 inputDirection;
@@ -38,6 +39,10 @@ public class Playercontroller : MonoBehaviour
         {
             rb.velocity = transform.forward * moveInput * maxSpeed;
             //Debug.Log("Applying Force: " + inputDirection);
+        }
+        else
+        {
+            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, deceleration * Time.fixedDeltaTime);
         }
 
         //rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
