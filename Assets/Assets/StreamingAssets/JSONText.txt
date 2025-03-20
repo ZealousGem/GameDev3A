@@ -9,6 +9,14 @@
    {"Text": "I am John"},
    {"Text": "Nice to meet you"}
    
+   ],
+
+   "images": [
+   
+   {"picture": "Assets/Assets/StreamingAssets/Wood.png"},
+    {"picture": "Assets/Assets/StreamingAssets/Wood.png"},
+    {"picture": "Assets/Assets/StreamingAssets/Wood.png"}
+   
    ]
 
 },
@@ -21,7 +29,15 @@
    {"Text": "My name is PepeMan, nice to meet you"}
    
    
-      ]
+      ], 
+
+      "images": [
+   
+   {"picture": "Assets/Assets/StreamingAssets/sterling.png"},
+    {"picture": "Assets/Assets/StreamingAssets/sterling.png"}
+    
+   
+   ]
 
     }
 

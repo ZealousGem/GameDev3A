@@ -2,7 +2,9 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Windows;
+
 
 public class DialogueInfo : MonoBehaviour
 {
@@ -20,7 +22,7 @@ public class DialogueInfo : MonoBehaviour
      //   string filepath = Resources.Load<TextAsset>("");
 
         
-        if (File.Exists(filepath))
+        if (System.IO.File.Exists(filepath))
         {
             string DialogueD = System.IO.File.ReadAllText(filepath);
             // uses a couritne to load data so it isn't null errored
@@ -64,7 +66,8 @@ public class DialogueData
 public class People
 {
     public string name;
-    public List<DialogueLines> data; // this is made so there can be many dialogue for the character to speak and it can contain many strings instead of one
+    public List<DialogueLines> data;
+    public List<DialogueImages> images;// this is made so there can be many dialogue for the character to speak and it can contain many strings instead of one
 }
 
 [System.Serializable]
@@ -73,7 +76,13 @@ public class DialogueLines
     public string Text;
 }
 
+[System.Serializable]
+public class DialogueImages{
+    public string picture;
+}
+
 // https://www.youtube.com/watch?v=pVXEUtMy_Hc
 // https://www.youtube.com/watch?v=XbdnG__wzZ8
+// https://www.youtube.com/watch?v=lFp8Z_3wa7M
 
 
