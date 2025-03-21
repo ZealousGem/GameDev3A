@@ -1912,9 +1912,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1034932866822763152, guid: 5419fb931b1bcbe4ea1260bd1b2a1e4b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1181562350251886477, guid: 5419fb931b1bcbe4ea1260bd1b2a1e4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.08
+      value: -0.42
       objectReference: {fileID: 0}
     - target: {fileID: 1181562350251886477, guid: 5419fb931b1bcbe4ea1260bd1b2a1e4b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1952,6 +1956,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1219860948510680066, guid: 5419fb931b1bcbe4ea1260bd1b2a1e4b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3678369034974645981, guid: 5419fb931b1bcbe4ea1260bd1b2a1e4b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994823277317097273, guid: 5419fb931b1bcbe4ea1260bd1b2a1e4b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5128785793726237720, guid: 5419fb931b1bcbe4ea1260bd1b2a1e4b, type: 3}
       propertyPath: m_Name
       value: sports type a color 1
@@ -1959,6 +1975,18 @@ PrefabInstance:
     - target: {fileID: 5128785793726237720, guid: 5419fb931b1bcbe4ea1260bd1b2a1e4b, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264075168058269769, guid: 5419fb931b1bcbe4ea1260bd1b2a1e4b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264075168058269771, guid: 5419fb931b1bcbe4ea1260bd1b2a1e4b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8264075168058269775, guid: 5419fb931b1bcbe4ea1260bd1b2a1e4b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2004,8 +2032,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 1
   maxSpeed: 20
-  turnSpeed: 100
+  baseTurnSpeed: 100
   deceleration: 5
+  minTurnSpeed: 20
   rb: {fileID: 1399393198}
 --- !u!54 &1399393198
 Rigidbody:

@@ -7,8 +7,9 @@ public class Playercontroller : MonoBehaviour
 
     public float acceleration = 1;
     public float maxSpeed = 20;
-    public float turnSpeed = 100;
+    public float baseTurnSpeed = 100;
     public float deceleration = 5f;
+    public float minTurnSpeed = 20;
 
     public Rigidbody rb;
     private Vector3 inputDirection;
@@ -29,7 +30,19 @@ public class Playercontroller : MonoBehaviour
         //Debug.Log("Move Input: " + moveInput + ", Turn Input: " + turnInput);
 
         inputDirection = transform.forward * moveInput * acceleration;
-        transform.Rotate(Vector3.up * turnInput * turnSpeed * Time.deltaTime);
+
+        float speedFactor = rb.velocity.magnitude / maxSpeed;
+        float currentTurnSpeed = Mathf.Lerp(minTurnSpeed, baseTurnSpeed, speedFactor);
+
+        if (rb.velocity.magnitude > 0.5f)
+        {
+            transform.Rotate(Vector3.up * turnInput * currentTurnSpeed * Time.deltaTime);
+
+            
+            
+
+        }
+           
 
     }
     private void FixedUpdate()
