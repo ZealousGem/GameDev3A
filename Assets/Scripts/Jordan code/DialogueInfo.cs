@@ -65,6 +65,7 @@ public class DialogueData
 [System.Serializable]
 public class People
 {
+    public string id;
     public string name;
     public List<DialogueLines> data;
     public List<DialogueImages> images;// this is made so there can be many dialogue for the character to speak and it can contain many strings instead of one

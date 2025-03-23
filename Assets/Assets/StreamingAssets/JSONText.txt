@@ -2,6 +2,7 @@
 
 "Characters": [
 {
+  "id": "1",
   "name": "John",
    "data" :[
    
@@ -22,6 +23,7 @@
 },
 
 {
+  "id": "2",
   "name": "PepeMan",
   "data":[
    

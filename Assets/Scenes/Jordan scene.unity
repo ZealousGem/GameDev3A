@@ -775,8 +775,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 2142049452}
   name:
-  - John
-  - PepeMan
+  - 1
+  - 2
   info: {fileID: 1076172307}
 --- !u!114 &1076172307
 MonoBehaviour:
@@ -1145,6 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dialogue: {fileID: 49893124}
+  Button: {fileID: 1359639244}
   image: {fileID: 1711000779}
   login: []
   Charname: {fileID: 688115614}

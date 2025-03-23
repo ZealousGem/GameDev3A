@@ -11,6 +11,7 @@ public class DialogueSystem : MonoBehaviour
     private CustomQueue<string> lines;
     private CustomQueue<Sprite> images;
     public GameObject Dialogue;
+    public GameObject Button;
     public Image image;
     public List<string> login;
     public Text Charname;
@@ -46,7 +47,7 @@ public class DialogueSystem : MonoBehaviour
         //Debug.Log("working");
         Dialogue.SetActive(true);
         end = false;
-        People characterD = info.DialogueData.Characters.Find(Characters => Characters.name == ChacterName); // this will create a character object and will instatite with the data from the josn file
+        People characterD = info.DialogueData.Characters.Find(Characters => Characters.id == ChacterName); // this will create a character object and will instatite with the data from the josn file
         if (characterD != null)
         {
            
@@ -117,7 +118,8 @@ public class DialogueSystem : MonoBehaviour
         Sprite Nextimage = images.Dequeue();
         image.sprite = Nextimage;
         // Debug.Log(sentence);
-        //description.text = sentence; 
+        //description.text = sentence;
+        Button.SetActive(false);
         StartCoroutine(TypeDialogue(sentence));
         login.Add(sentence);
         counter += 1;
@@ -132,6 +134,7 @@ public class DialogueSystem : MonoBehaviour
             description.text += T;
             yield return new WaitForSeconds(0.03f);
         }
+        Button.SetActive(true);
     }
 
     void EndDialogue() // will end the dialogue by setting bool to false allowing the for loop in dialogue manager to move the i to the next position
