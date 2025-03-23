@@ -15,14 +15,18 @@ public class CustomStack<T>
 
     public T Pop()
     {
-        T item = elements[^1];
+        T item = elements[elements.Count - 1];
+        // Retrieve the last element in the list (top of the stack)
+
         elements.RemoveAt(elements.Count - 1);
+        // Remove the last element from the list
+
         return item;
     }
 
     public T Peek()
     {
-        return elements[^1];
+        return elements[elements.Count - 1];
     }
     public bool IsEmpty()
     {

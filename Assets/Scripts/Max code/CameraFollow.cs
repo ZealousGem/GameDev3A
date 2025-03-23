@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -19,6 +20,12 @@ public class CameraFollow : MonoBehaviour
     {
         
     }
+
+    //If we update the camera position in Update(),
+    //it might move before the player updates their position for that frame.
+
+    //Using LateUpdate(), we ensure the camera moves after the player moves,
+    //making the camera movement smoother and preventing any jittering.
     private void LateUpdate()
     {
         if (target != null) return;
@@ -26,5 +33,8 @@ public class CameraFollow : MonoBehaviour
         Vector3 desiredPosition = target.position + offset;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
         transform.LookAt(target);
+        //The camera is smoothely moved to the desired position
+
+
     }
 }
