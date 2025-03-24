@@ -15,6 +15,10 @@ public class Playercontroller : MonoBehaviour
     // Minimum turning speed when moving slowly
 
     public Rigidbody rb;
+
+    public float brakeStrength = 30;
+
+    private float currentSpeed = 0;
     private Vector3 inputDirection;
     // Start is called before the first frame update
     void Start()
@@ -30,23 +34,30 @@ public class Playercontroller : MonoBehaviour
         float moveInput = Input.GetAxis("Vertical");
         float turnInput = Input.GetAxis("Horizontal");
 
+        bool isBraking = Input.GetKey(KeyCode.Space);
+
         //Debug.Log("Move Input: " + moveInput + ", Turn Input: " + turnInput);
 
-        inputDirection = transform.forward * moveInput * acceleration;
+        //inputDirection = transform.forward * moveInput * acceleration;
+        float speedFactor = currentSpeed / maxSpeed;
 
 
-
-        float speedFactor = rb.velocity.magnitude / maxSpeed;
+        //float speedFactor = rb.velocity.magnitude / maxSpeed;
         float currentTurnSpeed = Mathf.Lerp(minTurnSpeed, baseTurnSpeed, speedFactor);
         // Adjust turn speed based on current movement speed (slower speeds = slower turns)
 
         // Only allow turning when the player is moving
-        if (rb.velocity.magnitude > 0.5f)
+        if (currentSpeed > 0.5f)
         {
             transform.Rotate(Vector3.up * turnInput * currentTurnSpeed * Time.deltaTime);
 
             
             
+
+        }
+        if (isBraking)
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, brakeStrength * Time.deltaTime);
 
         }
            
@@ -55,17 +66,24 @@ public class Playercontroller : MonoBehaviour
     private void FixedUpdate()
     {
         float moveInput = Input.GetAxis("Vertical");
-        if (moveInput != 0)
+        bool isBraking = Input.GetKey(KeyCode.Space);
+        if (!isBraking)
         {
-            rb.velocity = transform.forward * moveInput * maxSpeed;
-            // Apply velocity in the forward direction based on input and max speed
+            if (moveInput != 0)
+            {
+                currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed * moveInput, acceleration * Time.fixedDeltaTime);
+
+            }
+            else
+            {
+                currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.fixedDeltaTime);
+
+            }
+
         }
-        else
-        {
-            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, deceleration * Time.fixedDeltaTime);
-            // If no input is given, gradually slow down the player
-        }
+            
 
         //rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+        rb.velocity = transform.forward * currentSpeed;
     }
 }
