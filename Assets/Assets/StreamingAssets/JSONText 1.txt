@@ -1,0 +1,49 @@
+{
+
+"Characters": [
+{
+  "id": "1",
+  "name": "John",
+   "data" :[
+   
+  { "Text": "Hello"},
+   {"Text": "I am John"},
+   {"Text": "Nice to meet you"}
+   
+   ],
+
+   "images": [
+   
+   {"picture": "Assets/Assets/StreamingAssets/Wood.png"},
+    {"picture": "Assets/Assets/StreamingAssets/Wood.png"},
+    {"picture": "Assets/Assets/StreamingAssets/Wood.png"}
+   
+   ]
+
+},
+
+{
+  "id": "2",
+  "name": "PepeMan",
+  "data":[
+   
+   {"Text": "Hello John"},
+   {"Text": "My name is PepeMan, nice to meet you"}
+   
+   
+      ], 
+
+      "images": [
+   
+   {"picture": "Assets/Assets/StreamingAssets/sterling.png"},
+    {"picture": "Assets/Assets/StreamingAssets/sterling.png"}
+    
+   
+   ]
+
+    }
+
+
+  ]
+ 
+}
