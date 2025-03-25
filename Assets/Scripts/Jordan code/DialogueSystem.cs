@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Sprites;
 using UnityEngine.Rendering.VirtualTexturing;
+using UnityEngine.TextCore.Text;
 
 public class DialogueSystem : MonoBehaviour
 {
     // Start is called before the first frame update
     private CustomQueue<string> lines;
     private CustomQueue<Sprite> images;
+    private CustomQueue<string> names;
     public GameObject Dialogue;
     public GameObject Button;
     public Image image;
@@ -26,6 +28,7 @@ public class DialogueSystem : MonoBehaviour
     {
         lines = new CustomQueue<string>(); // creates a Queue string for the dialogue 
         images = new CustomQueue<Sprite>(); // creates Queue sprite for images
+        names = new CustomQueue<string>();
         end = true;
 
         if (info == null)
@@ -53,8 +56,8 @@ public class DialogueSystem : MonoBehaviour
            
            
             Debug.Log("Successfully loaded characters.");
-            Charname.text = characterD.name;
-            nameDisplay = characterD.name + colon;
+           // Charname.text = characterD.name;
+          //  nameDisplay = characterD.name + colon;
             lines.Clear();
             images.Clear();
             
@@ -71,6 +74,11 @@ public class DialogueSystem : MonoBehaviour
                 images.Enqueue(curImage); // will add all sprites from object into the queue to create a sequential order
                
                     
+            }
+
+            foreach (DialogueNames sent in characterD.character)
+            {
+                names.Enqueue(sent.name);
             }
 
             DisplayNextSentence(); // this will activate to start the elemtns to be removed from the queue
@@ -116,6 +124,8 @@ public class DialogueSystem : MonoBehaviour
         }
         string sentence = lines.Dequeue(); // everytime the diplsay is pressed the element in front will be removed and makes the element behind in fron of the Queue
         Sprite Nextimage = images.Dequeue();
+        string CharName = names.Dequeue();
+        Charname.text = CharName;
         image.sprite = Nextimage;
         // Debug.Log(sentence);
         //description.text = sentence;

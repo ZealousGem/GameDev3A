@@ -1,0 +1,104 @@
+{
+
+"Characters": [
+{
+  "id": "1",
+  "name": "Coach Walker",
+   "data" :[
+ 
+   {"Text": "Not bad Ryan. Good race ...but don't get too arrogant"}
+   
+   ],
+
+   "images": [
+   
+    {"picture": "Assets/Assets/StreamingAssets/Wood.png"}
+   
+   ]
+
+},
+
+{
+  "id": "2",
+  "name": "Rival Ryan",
+  "data":[
+   
+   
+   {"Text": "Arrogant? When your as good as me, you have every reason to be confident"}
+   
+   
+      ], 
+
+      "images": [
+
+    {"picture": "Assets/Assets/StreamingAssets/sterling.png"}
+    
+   
+   ]
+
+    },
+
+    {
+  "id": "3",
+  "name": "Coach Walker",
+   "data" :[
+ 
+   {"Text": "Sigh. yeah, yeah. All it takes is a single mistake and overconfidence can be a career killer."},
+   {"Text": "Alright, rookie. Before you think you can race on the same level as Ryan, i need to see if you can handle the basics"}
+   
+   ],
+
+   "images": [
+   
+    {"picture": "Assets/Assets/StreamingAssets/Wood.png"},
+    {"picture": "Assets/Assets/StreamingAssets/Wood.png"}
+   
+   ]
+
+},
+
+{
+  "id": "4",
+  "name": "Rival Ryan",
+  "data":[
+   
+   
+   {"Text": "Hope your listening, it would be a shame if you failed your first test"}
+   
+   
+      ], 
+
+      "images": [
+
+    {"picture": "Assets/Assets/StreamingAssets/sterling.png"}
+    
+   
+   ]
+
+    },
+
+    {
+  "id": "5",
+  "name": "Coach Walker",
+   "data" :[
+ 
+   {"Text": "This is a checkpoint race. No opponents, just you against the clock."},
+    {"Text": "Hit all the checkpoints before the time runs out and you're one step closer to being a real race."},
+    {"Text": "Good Luck Rookie. Don't mess up, you only have one shot at this."}
+   
+   ],
+
+   "images": [
+   
+    {"picture": "Assets/Assets/StreamingAssets/Wood.png"},
+     {"picture": "Assets/Assets/StreamingAssets/Wood.png"},
+      {"picture": "Assets/Assets/StreamingAssets/Wood.png"}
+   
+   ]
+
+}
+
+
+  ]
+ 
+}
