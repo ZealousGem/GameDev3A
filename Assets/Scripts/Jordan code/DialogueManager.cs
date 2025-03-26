@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     public DialogueSystem start;
     public string[] name;
     public DialogueInfo info;
+    public string Nextscene;
     void Start()
     {
         if (info != null)
@@ -49,14 +51,19 @@ public class DialogueManager : MonoBehaviour
             {
                 yield return null;
             }
-            start.end = true; // if true the next character will speak 
+            start.end = true;
+            // if true the next character will speak 
+            //SceneManager.LoadScene(Nextscene);
+            SkipDialogue();
         }
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SkipDialogue()
     {
-       
+        LevelManager.instance.LoadScene(Nextscene);
     }
+
+    // Update is called once per frame
+   
 }
