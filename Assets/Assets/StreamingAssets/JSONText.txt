@@ -21,8 +21,8 @@
    "data" :[
  
    {"Text": "Not bad Ryan. Good race ...but don't get too arrogant"},
-   {"Text": "Arrogant? When your as good as me, you have every reason to be confident"},
-   {"Text": "Sigh. yeah, yeah. All it takes is a single mistake and overconfidence can be a career killer."},
+   {"Text": "Huh Arrogant,  When your as good as me. You have every reason to be confident"},
+   {"Text": "Sigh. yeah, yeah. All it takes is a single mistake, Overconfidence can be a career killer."},
    {"Text": "Alright, rookie. Before you think you can race on the same level as Ryan, i need to see if you can handle the basics"},
    {"Text": "Hope your listening, it would be a shame if you failed your first test"},
    {"Text": "This is a checkpoint race. No opponents, just you against the clock."},

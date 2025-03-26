@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Sprites;
 using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.TextCore.Text;
+using TMPro;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -16,10 +17,10 @@ public class DialogueSystem : MonoBehaviour
     public GameObject Button;
     public Image image;
     public List<string> login;
-    public Text Charname;
+    public TMP_Text Charname;
     string nameDisplay;
     string colon = ":";
-    public Text description;
+    public TMP_Text description;
     public int counter = 0;
     public bool end;
     public float Speed;
@@ -60,6 +61,7 @@ public class DialogueSystem : MonoBehaviour
           //  nameDisplay = characterD.name + colon;
             lines.Clear();
             images.Clear();
+            names.Clear();
             
            // clears any elements that are in the queue
 
@@ -156,6 +158,7 @@ public class DialogueSystem : MonoBehaviour
         counter = 0;
         login.Clear();
         images.Clear();
+        names.Clear();
         Dialogue.SetActive(false);
     }
 
