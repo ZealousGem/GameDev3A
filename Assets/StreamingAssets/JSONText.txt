@@ -1,0 +1,90 @@
+{
+
+"Characters": [
+{
+  "id": "1",
+  "character":  [
+  
+  
+  {"name" :"Coach Walker"},
+  {"name" :"Rival Ryan"},
+  {"name" :"Coach Walker"},
+  {"name" :"Coach Walker"},
+  {"name" :"Rival Ryan"},
+  {"name" :"Coach Walker"},
+  {"name" :"Coach Walker"},
+  {"name" :"Coach Walker"}
+  
+  
+  
+  ],
+   "data" :[
+ 
+   {"Text": "Not bad Ryan. Good race ...but don't get too arrogant"},
+   {"Text": "Huh Arrogant,  When your as good as me. You have every reason to be confident"},
+   {"Text": "Sigh. yeah, yeah. All it takes is a single mistake, Overconfidence can be a career killer."},
+   {"Text": "Alright, rookie. Before you think you can race on the same level as Ryan, i need to see if you can handle the basics"},
+   {"Text": "Hope your listening, it would be a shame if you failed your first test"},
+   {"Text": "This is a checkpoint race. No opponents, just you against the clock."},
+   {"Text": "Hit all the checkpoints before the time runs out and you're one step closer to being a real race."},
+   {"Text": "Good Luck Rookie. Don't mess up, you only have one shot at this."}
+   
+   ],
+
+   "images": [
+   
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/RivalRyanFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/RivalRyanFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+     {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"}
+   
+   ]
+
+},
+
+{
+  "id": "2",
+  "character":  [
+  
+  
+  {"name" :"Coach Walker"},
+  {"name" :"Rival Ryan"},
+  {"name" :"Coach Walker"},
+  {"name" :"Rival Ryan"}
+  
+  
+  
+  
+  ],
+   "data" :[
+ 
+   {"Text": "You did well in the checkpoint race. Now it's time to see if you can compete against other racers."},
+   {"Text": "They better. Otherwise, what's the point?"},
+   {"Text": "Relax, Ryan. The goal is to finish strong and learn. No need to prove anything... yet."},
+   {"Text": "Yeah, but if they do want to prove something, they better be fast."}
+
+   
+   ],
+
+   "images": [
+   
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/RivalRyanFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/RivalRyanFinal.png"}
+    
+   
+   ]
+
+}
+
+
+
+
+  ]
+ 
+}

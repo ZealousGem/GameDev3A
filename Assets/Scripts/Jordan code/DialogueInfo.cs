@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows;
@@ -17,16 +18,17 @@ public class DialogueInfo : MonoBehaviour
     }
     public IEnumerator LoadData()
     {
-        string filepath = "Assets/Assets/StreamingAssets/JSONText.txt"; // the location of the json file
-         // string filepath = Application.streamingAssetsPath + "/JSONText.txt";
-     //   string filepath = Resources.Load<TextAsset>("");
+        // string filepath = "Assets/Assets/StreamingAssets/JSONText.txt"; // the location of the json file
+        // string filepath = Application.streamingAssetsPath + "/JSONText.txt";
+        //   string filepath = Resources.Load<TextAsset>("");
+        string filepath = Path.Combine(Application.streamingAssetsPath, "JSONText.txt");
 
-        
         if (System.IO.File.Exists(filepath))
         {
             string DialogueD = System.IO.File.ReadAllText(filepath);
+           
             // uses a couritne to load data so it isn't null errored
-            
+
             if (!string.IsNullOrEmpty(DialogueD))
             {
                 DialogueData = JsonUtility.FromJson<DialogueData>(DialogueD); // converts the json data to the variables in dialogueData

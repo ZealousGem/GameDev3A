@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 0eb982b6bc224cd4abb02455cd2203e4
-  - enabled: 1
     path: Assets/Scenes/Checkpoint Race Dialogue.unity
     guid: 5de3ac3c1e9e0ff41a4b05722c43b788
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 0eb982b6bc224cd4abb02455cd2203e4
   - enabled: 1
     path: Assets/Scenes/Checkpoint Race.unity
     guid: a54eeda668f52ef4cab5eefd6e9d224e
