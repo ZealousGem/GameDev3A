@@ -11,6 +11,7 @@ public class CheckpointManager : MonoBehaviour
     public List<Transform> CheckpointTransforms; // List to hold all checkpoints in the race
     private CustomStack<Transform> checkpointStack;  // Custom stack to manage checkpoint order
     private Transform currentCheckpoint;
+    public UIManager UIManager;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,8 @@ public class CheckpointManager : MonoBehaviour
         {
             Debug.Log(" Race Completed!");
             raceTimer.raceActive = false;
+            UIManager.ShowGameFinishedMenu(true); // Shows win text
+            // here we call to the game over script canva thing
             // Stop the race timer when all checkpoints are cleared
 
         }

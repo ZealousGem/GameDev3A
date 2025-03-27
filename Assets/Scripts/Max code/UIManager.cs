@@ -1,0 +1,101 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
+
+public class UIManager : MonoBehaviour
+{
+    public CanvasGroup pauseMenu; // Assign PauseMenuCanvas
+    public CanvasGroup gameFinishedMenu; // Assign GameFinishedCanvas
+    public RaceTimer raceTimer; // Reference to the race timer script
+
+    private bool isPaused = false;
+    //private bool gameFinished = false;
+
+    //public  Text gameFinishedText;
+    public TextMeshProUGUI gameFinishedText;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        HideCanvas(pauseMenu);
+        HideCanvas(gameFinishedMenu);
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            
+            
+                TogglePause();
+            
+
+        }
+
+
+    }
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+        if (isPaused )
+        {
+            ShowCanvas(pauseMenu);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            HideCanvas(pauseMenu);
+            Time.timeScale = 1;
+        }
+    }
+    private void ShowCanvas(CanvasGroup canvas)
+    {
+        canvas.alpha = 1;
+        canvas.interactable = true;
+        canvas.blocksRaycasts = true;
+
+    }
+    private void HideCanvas(CanvasGroup canvas)
+    {
+        canvas.alpha = 0;
+        canvas.interactable = false;
+        canvas.blocksRaycasts = false;
+
+    }
+    public void ShowGameFinishedMenu(bool won)
+    {
+        ShowCanvas(gameFinishedMenu);
+        Time.timeScale = 0f;
+
+        gameFinishedText.text = won ? " Race Completed! You Win! " : " Time's Up! You Lose! ";
+
+    }
+
+    public void ResumeGame()
+    {
+        TogglePause();
+    }
+    public void RestartGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+
+    }
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+
+    }
+}

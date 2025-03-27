@@ -9,6 +9,7 @@ public class RaceTimer : MonoBehaviour
     private float currentTime;
     public Text timerText;
     public bool raceActive = true;
+    public UIManager UIManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,7 @@ public class RaceTimer : MonoBehaviour
                 raceActive = false;
                 currentTime= 0;
                 Debug.Log("Time's up! You lost.");
+                UIManager.ShowGameFinishedMenu(false); // Shows lose text
 
 
             }
