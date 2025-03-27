@@ -27,6 +27,7 @@ public class DialogueSystem : MonoBehaviour
     DialogueInfo info;
     private void Start()
     {
+        Dialogue.SetActive(false);
         lines = new CustomQueue<string>(); // creates a Queue string for the dialogue 
         images = new CustomQueue<Sprite>(); // creates Queue sprite for images
         names = new CustomQueue<string>();

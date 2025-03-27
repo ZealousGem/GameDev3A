@@ -33,18 +33,56 @@
 
    "images": [
    
-    {"picture": "Assets/Assets/StreamingAssets/Wood.png"},
-    {"picture": "Assets/Assets/StreamingAssets/sterling.png"},
-    {"picture": "Assets/Assets/StreamingAssets/Wood.png"},
-    {"picture": "Assets/Assets/StreamingAssets/Wood.png"},
-    {"picture": "Assets/Assets/StreamingAssets/sterling.png"},
-    {"picture": "Assets/Assets/StreamingAssets/Wood.png"},
-    {"picture": "Assets/Assets/StreamingAssets/Wood.png"},
-     {"picture": "Assets/Assets/StreamingAssets/Wood.png"}
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/RivalRyanFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/RivalRyanFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+     {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"}
+   
+   ]
+
+},
+
+{
+  "id": "2",
+  "character":  [
+  
+  
+  {"name" :"Coach Walker"},
+  {"name" :"Rival Ryan"},
+  {"name" :"Coach Walker"},
+  {"name" :"Rival Ryan"}
+  
+  
+  
+  
+  ],
+   "data" :[
+ 
+   {"Text": "You did well in the checkpoint race. Now it's time to see if you can compete against other racers."},
+   {"Text": "They better. Otherwise, what's the point?"},
+   {"Text": "Relax, Ryan. The goal is to finish strong and learn. No need to prove anything... yet."},
+   {"Text": "Yeah, but if they do want to prove something, they better be fast."}
+
+   
+   ],
+
+   "images": [
+   
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/RivalRyanFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
+    {"picture": "Assets/Assets/StreamingAssets/RivalRyanFinal.png"}
+    
    
    ]
 
 }
+
+
 
 
   ]
