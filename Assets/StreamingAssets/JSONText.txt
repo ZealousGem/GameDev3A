@@ -33,14 +33,14 @@
 
    "images": [
    
-    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
-    {"picture": "Assets/Assets/StreamingAssets/RivalRyanFinal.png"},
-    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
-    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
-    {"picture": "Assets/Assets/StreamingAssets/RivalRyanFinal.png"},
-    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
-    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
-     {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"}
+    {"picture": "CoachWalkerFinal.png"},
+    {"picture": "Rival RyanFinal.png"},
+    {"picture": "CoachWalkerFinal.png"},
+    {"picture": "CoachWalkerFinal.png"},
+    {"picture": "Rival RyanFinal.png"},
+    {"picture": "CoachWalkerFinal.png"},
+    {"picture": "CoachWalkerFinal.png"},
+     {"picture": "CoachWalkerFinal.png"}
    
    ]
 
@@ -72,10 +72,10 @@
 
    "images": [
    
-    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
-    {"picture": "Assets/Assets/StreamingAssets/RivalRyanFinal.png"},
-    {"picture": "Assets/Assets/StreamingAssets/CoachWalkerFinal.png"},
-    {"picture": "Assets/Assets/StreamingAssets/RivalRyanFinal.png"}
+    {"picture": "CoachWalkerFinal.png"},
+    {"picture": "Rival RyanFinal.png"},
+    {"picture": "CoachWalkerFinal.png"},
+    {"picture": "Rival RyanFinal.png"}
     
    
    ]

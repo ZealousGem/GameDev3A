@@ -5,7 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.Sprites;
 using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.TextCore.Text;
+using System.IO;
 using TMPro;
+
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -100,10 +102,12 @@ public class DialogueSystem : MonoBehaviour
 
     public Sprite LoadSprite(string file) // reads the path to find the image to display
     {
+
+        string imagePath = Path.Combine(Application.streamingAssetsPath, file);
         
-        if (System.IO.File.Exists(file)) // checks if image from the file path is found
+        if (File.Exists(imagePath)) // checks if image from the file path is found
         {
-            byte[] filesInfo = System.IO.File.ReadAllBytes(file); // reads the bytes of image
+            byte[] filesInfo = File.ReadAllBytes(imagePath); // reads the bytes of image
             Texture2D texture = new Texture2D(2,2); // sets texture size
             texture.LoadImage(filesInfo); // loads the image using the bytes from read file 
             return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f)); // returns the newly created read sprite image to make the sprite be loaded into the queue
