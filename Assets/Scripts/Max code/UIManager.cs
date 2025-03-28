@@ -84,7 +84,7 @@ public class UIManager : MonoBehaviour
     }
     public void RestartGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
@@ -95,7 +95,17 @@ public class UIManager : MonoBehaviour
     }
     public void LoadMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+        if (Time.timeScale == 1f)
+        {
+            Debug.Log("not forzen");
+        }
+
+        else
+        {
+            Debug.Log("forzen");
+        }
 
     }
 }

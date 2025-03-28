@@ -1854,6 +1854,7 @@ MonoBehaviour:
   image: {fileID: 1711000779}
   login: []
   Charname: {fileID: 2034542500}
+  isAutomatic: 0
   description: {fileID: 1977513169}
   counter: 0
   end: 0
