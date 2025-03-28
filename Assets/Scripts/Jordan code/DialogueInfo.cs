@@ -95,5 +95,6 @@ public class DialogueImages{
 // https://www.youtube.com/watch?v=lFp8Z_3wa7M
 // https://www.dafont.com/racing-engine-brake.font 
 // https://www.dafont.com/racing-car.font?text=sci-fi 
+// https://gran-turismo.fandom.com/wiki/Pit_lane
 
 

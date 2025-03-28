@@ -80,6 +80,42 @@
    
    ]
 
+},
+
+{
+  "id": "3",
+  "character":  [
+  
+  
+  {"name" :"Coach Walker"},
+  {"name" :"Rival Ryan"},
+  {"name" :"Coach Walker"},
+  {"name" :"Rival Ryan"}
+  
+  
+  
+  
+  ],
+   "data" :[
+ 
+   {"Text": "Alright, rookie. You handled the beginner race well. Now it's time for the real challenge."},
+   {"Text": "Yeah, yeah. But can they handle split routes. That's where real racers prove themselves."},
+   {"Text": "The track branches off in places, so you'll need to pick your lines carefully. No second chances."},
+   {"Text": "So... no pressure. Hahahaha"}
+
+   
+   ],
+
+   "images": [
+   
+    {"picture": "CoachWalkerFinal.png"},
+    {"picture": "Rival RyanFinal.png"},
+    {"picture": "CoachWalkerFinal.png"},
+    {"picture": "Rival RyanFinal.png"}
+    
+   
+   ]
+
 }
 
 
