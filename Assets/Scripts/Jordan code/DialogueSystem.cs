@@ -20,6 +20,7 @@ public class DialogueSystem : MonoBehaviour
     public Image image;
     public List<string> login;
     public TMP_Text Charname;
+    public bool isAutomatic;
     string nameDisplay;
     string colon = ":";
     public TMP_Text description;
@@ -121,6 +122,11 @@ public class DialogueSystem : MonoBehaviour
         
     }
 
+    public void AutomaticClick()
+    {
+        DisplayNextSentence();
+    }
+
     public void DisplayNextSentence() // this method is activated by the next button input
     {
         //Debug.Log("next dialogue");
@@ -151,7 +157,18 @@ public class DialogueSystem : MonoBehaviour
             description.text += T;
             yield return new WaitForSeconds(0.03f);
         }
-        Button.SetActive(true);
+
+        if (isAutomatic)
+        {
+            yield return new WaitForSeconds(2f);
+            DisplayNextSentence();
+        }
+
+        else
+        {
+            Button.SetActive(true);
+        }
+       
     }
 
     void EndDialogue() // will end the dialogue by setting bool to false allowing the for loop in dialogue manager to move the i to the next position
