@@ -24,4 +24,9 @@ public class MainMenuManager : MonoBehaviour
     {
         LevelManager.instance.QuitGame();
     }
+
+    public void MainMenu()
+    {
+        LevelManager.instance.LoadMainMenu();
+    }
 }
