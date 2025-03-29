@@ -10,7 +10,17 @@ public class Speed : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            playerRb = player.GetComponent<Rigidbody>();
+        }
+        else
+        {
+            Debug.LogError("Player object not found! Make sure the Player is tagged correctly.");
+
+        }
+
     }
 
     // Update is called once per frame
