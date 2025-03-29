@@ -6,11 +6,11 @@ public class CheckpointManager : MonoBehaviour
 {
 
     public RaceTimer raceTimer;
-    public float timeBonus = 5f;
+    private float timeBonus = 3f;// this dictates how much additional time the playergets when they reach a checkpoint
 
     public List<Transform> CheckpointTransforms; // List to hold all checkpoints in the race
     private CustomStack<Transform> checkpointStack;  // Custom stack to manage checkpoint order
-    private Transform currentCheckpoint;
+    private Transform currentCheckpoint; //the position of the cuurent checkpoint
     public UIManager UIManager;
 
     // Start is called before the first frame update
@@ -19,7 +19,7 @@ public class CheckpointManager : MonoBehaviour
         checkpointStack = new CustomStack<Transform>();
 
         // Push checkpoints onto the stack in reverse order
-        // (so the first checkpoint is on top)
+        // so that the first checkpoint is the one on the top
         for (int i =CheckpointTransforms.Count - 1;i >=0; i--)
         {
             checkpointStack.Push(CheckpointTransforms[i]);
@@ -32,16 +32,17 @@ public class CheckpointManager : MonoBehaviour
     {
         if (!checkpointStack.IsEmpty())
         {
+            //used when there are still checkpoints in the stack
             currentCheckpoint = checkpointStack.Peek(); // Get the next checkpoint
             HighlightCheckpoint(currentCheckpoint, Color.green); // Highlight it in green
         }
         else
         {
+            //used when their are no more checkpoints in the stack
             Debug.Log(" Race Completed!");
             raceTimer.raceActive = false;
             UIManager.ShowGameFinishedMenu(true); // Shows win text
-            // here we call to the game over script canva thing
-            // Stop the race timer when all checkpoints are cleared
+            
 
         }
 
@@ -93,9 +94,5 @@ public class CheckpointManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

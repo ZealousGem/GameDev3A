@@ -16,7 +16,7 @@ public class CustomStack<T>
     public T Pop()
     {
         T item = elements[elements.Count - 1];
-        // Retrieve the last element in the list (top of the stack)
+        // Retrieves the last element in the list (top of the stack)
 
         elements.RemoveAt(elements.Count - 1);
         // Remove the last element from the list
@@ -26,6 +26,7 @@ public class CustomStack<T>
 
     public T Peek()
     {
+        // Retrieves the last element in the list (top of the stack)
         return elements[elements.Count - 1];
     }
     public bool IsEmpty()
@@ -35,19 +36,11 @@ public class CustomStack<T>
 
     public int Count()
     {
+        //counts how many elements ther are
+        //need to check if this is used
         return elements.Count;
     }
-    // Start is called before the first frame update
+    
 
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

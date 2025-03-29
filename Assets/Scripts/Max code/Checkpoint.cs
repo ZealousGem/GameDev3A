@@ -16,6 +16,8 @@ public class Checkpoint : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //this is on every checkpoint and ensures that if something collides with the checkpoint 
+        //it needs to be tagged player to called the checkpointReached method in CheckpointManager
         if (other.CompareTag("Player"))
         {
             manager.CheckpointReached(transform);
@@ -24,9 +26,5 @@ public class Checkpoint : MonoBehaviour
     
     
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
