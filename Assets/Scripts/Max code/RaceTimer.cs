@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class RaceTimer : MonoBehaviour
 {
-    private float startTime = 20; //this is how much time is on the timer
+    private float startTime = 40; //this is how much time is on the timer
     private float currentTime;
     public Text timerText;
     public bool raceActive = true;

@@ -6,7 +6,7 @@ public class CheckpointManager : MonoBehaviour
 {
 
     public RaceTimer raceTimer;
-    private float timeBonus = 3f;// this dictates how much additional time the playergets when they reach a checkpoint
+    private float timeBonus = 4f;// this dictates how much additional time the playergets when they reach a checkpoint
 
     public List<Transform> CheckpointTransforms; // List to hold all checkpoints in the race
     private CustomStack<Transform> checkpointStack;  // Custom stack to manage checkpoint order

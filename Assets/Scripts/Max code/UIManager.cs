@@ -71,6 +71,7 @@ public class UIManager : MonoBehaviour
     }
     public void ShowGameFinishedMenu(bool won)
     {
+        Debug.Log("in showgamefinished menu");
         ShowCanvas(gameFinishedMenu);
         Time.timeScale = 0f;
 
