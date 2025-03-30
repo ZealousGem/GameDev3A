@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainMenuManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    
     public void Tutorial()
     {
         LevelManager.instance.LoadCheckpointRD();

@@ -12,9 +12,7 @@ public class UIManager : MonoBehaviour
     public RaceTimer raceTimer; // Reference to the race timer script
 
     private bool isPaused = false;
-    //private bool gameFinished = false;
-
-    //public  Text gameFinishedText;
+ 
     public TextMeshProUGUI gameFinishedText;
 
 
@@ -32,14 +30,8 @@ public class UIManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
-            
-            
                 TogglePause();
-            
-
         }
-
-
     }
     public void TogglePause()
     {
@@ -71,11 +63,12 @@ public class UIManager : MonoBehaviour
     }
     public void ShowGameFinishedMenu(bool won)
     {
-        Debug.Log("in showgamefinished menu");
+        ;
         ShowCanvas(gameFinishedMenu);
         Time.timeScale = 0f;
 
         gameFinishedText.text = won ? " Race Completed! You Win! " : " Time's Up! You Lose! ";
+        //might want to simplify
 
     }
 
@@ -94,6 +87,7 @@ public class UIManager : MonoBehaviour
         Application.Quit();
 
     }
+    
     public void LoadMainMenu()
     {
         Time.timeScale = 1f;

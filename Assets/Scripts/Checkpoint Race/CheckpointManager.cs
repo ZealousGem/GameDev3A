@@ -43,18 +43,17 @@ public class CheckpointManager : MonoBehaviour
             raceTimer.raceActive = false;
             UIManager.ShowGameFinishedMenu(true); // Shows win text
             
-
         }
 
     }
 
     // Returns the next checkpoint the player needs to reach
     //need to check as their are no referencces
-    public Transform GetNextCheckpoint()
-    {
-        return currentCheckpoint;
+    //public Transform GetNextCheckpoint()
+    //{
+    //    return currentCheckpoint;
         
-    }
+    //}
 
     // Called when a player reaches a checkpoint
     public void CheckpointReached(Transform checkpoint)
@@ -64,16 +63,12 @@ public class CheckpointManager : MonoBehaviour
         {
             checkpointStack.Pop();
             // Remove the checkpoint from the stack
-            Debug.Log("checkpoint reached:" + checkpoint.name);
-
-
+            
             raceTimer.AddTime(timeBonus);
-
             HighlightCheckpoint(checkpoint, Color.gray);
             // Change checkpoint color to gray
 
             Destroy(checkpoint.gameObject);
-
             SetNextCheckpoint();
 
         }
@@ -90,9 +85,7 @@ public class CheckpointManager : MonoBehaviour
         if (checkpointRenderer )
         {
             checkpointRenderer.material.color = color;
-
         }
     }
-
-    
+ 
 }

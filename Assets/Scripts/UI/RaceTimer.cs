@@ -35,21 +35,18 @@ public class RaceTimer : MonoBehaviour
                 currentTime= 0;
                 Debug.Log("Time's up! You lost.");
                 UIManager.ShowGameFinishedMenu(false); // Shows lose text
-
-
             }
-
         }
-        
     }
+    //used to update the text on the timer
     void UpdateTimerUI()
     {
-        //used to update the text on the timer
         timerText.text = "Time: " + Mathf.RoundToInt(currentTime) + "s";
     }
+
+    // this is used when the player reaches a checkpoint to give them extra time
     public void AddTime(float timeBonus)
     {
-        // this is used when the player reaches a checkpoint to give them extra time
         currentTime += timeBonus;
         UpdateTimerUI();
     }

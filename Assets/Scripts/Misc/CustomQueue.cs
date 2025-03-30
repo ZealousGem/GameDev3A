@@ -16,11 +16,7 @@ public class CustomQueue <T>
 
     public void Enqueue(T element)
     {
-       
             list.Add(element);
-   
-       
-       
     }
 
     public T Dequeue()

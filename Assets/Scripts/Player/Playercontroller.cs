@@ -10,7 +10,7 @@ public class Playercontroller : MonoBehaviour
     public float baseTurnSpeed = 100;
     // Base turn speed when moving at full speed
 
-    public float deceleration = 5f;
+    public float deceleration = 5;
     public float minTurnSpeed = 20;
     // Minimum turning speed when moving slowly
 
@@ -37,13 +37,9 @@ public class Playercontroller : MonoBehaviour
 
         bool isBraking = Input.GetKey(KeyCode.Space);
 
-        //Debug.Log("Move Input: " + moveInput + ", Turn Input: " + turnInput);
-
-        
         float speedFactor = currentSpeed / (maxSpeed / 3.6f);
         // Calculate speed factor based on current speed relative to max speed
 
-        
         float currentTurnSpeed = Mathf.Lerp(minTurnSpeed, baseTurnSpeed, speedFactor);
         // Adjust turn speed based on current movement speed (slower speeds = slower turns)
 
@@ -52,19 +48,14 @@ public class Playercontroller : MonoBehaviour
         {
             transform.Rotate(Vector3.up * turnInput * currentTurnSpeed * Time.deltaTime);
             // Rotate the player based on input, turn speed, and frame time
-
-
-
         }
         if (isBraking)
         {
-            // Gradually reduce speed to zero based on brake strength
             currentSpeed = Mathf.MoveTowards(currentSpeed, 0, brakeStrength * Time.deltaTime);
-
+            // Gradually reduce speed to zero based on brake strength
         }
-           
-
     }
+    //physics-based calculations work best in fixed update as we want a fixed interval to do calculations
     private void FixedUpdate()
     {
         float moveInput = Input.GetAxis("Vertical");
@@ -73,23 +64,18 @@ public class Playercontroller : MonoBehaviour
         {
             if (moveInput != 0)
             {
-                // Gradually increase speed towards max speed based on acceleration
                 currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed * moveInput, acceleration * Time.fixedDeltaTime);
-
+                // Gradually increase speed towards max speed based on acceleration
             }
             else
             {
-                // Decelerate to zero when no input is given
                 currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.fixedDeltaTime);
-
+                // Decelerate to zero when no input is given
             }
-
         }
-
         currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed / 3.6f);
 
-
-        // Move the player forward based on current speed
         rb.velocity = transform.forward * currentSpeed;
+        // Move the player forward based on current speed
     }
 }

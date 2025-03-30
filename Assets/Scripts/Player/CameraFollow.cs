@@ -22,7 +22,6 @@ public class CameraFollow : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
         // Smoothly interpolates the camera's current position towards the desired position based on the smoothSpeed value and frame time
         transform.LookAt(target);
-        
-
+      
     }
 }

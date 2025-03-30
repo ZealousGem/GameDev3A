@@ -23,9 +23,11 @@ public class Speed : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // used to show the speed
     void Update()
     {
+        // Calculates the player's speed in km/h by getting the magnitude of the Rigidbody's velocity (in m/s),
+        // then convert from meters per second to kilometers per hour by multiplying by 3.6
         float speed = playerRb.velocity.magnitude * 3.6f;
         speedText.text = "Speed: " + Mathf.RoundToInt(speed) + " km/h";
 

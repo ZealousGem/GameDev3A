@@ -24,19 +24,12 @@ public class LevelManager : MonoBehaviour
 
 
     }
-    public void LoadNextScene()
-    {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex+1);
-    }
+    
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
-    public void ReloadScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
