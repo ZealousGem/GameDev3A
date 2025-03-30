@@ -15,25 +15,26 @@ public class DialogueSystem : MonoBehaviour
     private CustomQueue<string> lines;
     private CustomQueue<Sprite> images;
     private CustomQueue<string> names;
+
     public GameObject Dialogue;
     public GameObject Button;
     public Image image;
+
     public List<string> login;
     public TMP_Text Charname;
     public bool isAutomatic;
-    string nameDisplay;
-    string colon = ":";
     public TMP_Text description;
     public int counter = 0;
     public bool end;
     public float Speed;
     DialogueInfo info;
+
     private void Start()
     {
         Dialogue.SetActive(false);
         lines = new CustomQueue<string>(); // creates a Queue string for the dialogue 
         images = new CustomQueue<Sprite>(); // creates Queue sprite for images
-        names = new CustomQueue<string>();
+        names = new CustomQueue<string>(); // creates Queue string for the names 
         end = true;
 
         if (info == null)
@@ -51,8 +52,7 @@ public class DialogueSystem : MonoBehaviour
 
     public void StartDialogue(string ChacterName) // method that will start the dialogue using the characters name in the string array from diaslogue manager
     {
-        // character.SetActive(true); 
-        //Debug.Log("working");
+        
         Dialogue.SetActive(true);
         end = false;
         People characterD = info.DialogueData.Characters.Find(Characters => Characters.id == ChacterName); // this will create a character object and will instatite with the data from the josn file
@@ -61,9 +61,8 @@ public class DialogueSystem : MonoBehaviour
            
            
             Debug.Log("Successfully loaded characters.");
-           // Charname.text = characterD.name;
-          //  nameDisplay = characterD.name + colon;
-            lines.Clear();
+          
+            lines.Clear(); 
             images.Clear();
             names.Clear();
             
@@ -138,33 +137,33 @@ public class DialogueSystem : MonoBehaviour
         string sentence = lines.Dequeue(); // everytime the diplsay is pressed the element in front will be removed and makes the element behind in fron of the Queue
         Sprite Nextimage = images.Dequeue();
         string CharName = names.Dequeue();
-        Charname.text = CharName;
+
+
+        Charname.text = CharName; 
         image.sprite = Nextimage;
-        // Debug.Log(sentence);
-        //description.text = sentence;
         Button.SetActive(false);
-        StartCoroutine(TypeDialogue(sentence));
+        StartCoroutine(TypeDialogue(sentence)); // displays the dialogue text in a courtieine to have text pop up in a timed sequence 
         login.Add(sentence);
-        counter += 1;
+        counter += 1; // keeps track fo the front position element in the queue
 
     }
 
     public IEnumerator TypeDialogue(string sentence)
     {
         description.text = "";
-        foreach (var T in sentence.ToCharArray())
+        foreach (var T in sentence.ToCharArray()) // will loop the text string through it's characters
         {
-            description.text += T;
+            description.text += T; // will dsiplay each character at a certain timed update to create dialogue text animation 
             yield return new WaitForSeconds(0.03f);
         }
 
-        if (isAutomatic)
+        if (isAutomatic) // bool will check if the dialogue is an automatic for the button not to be displayed
         {
             yield return new WaitForSeconds(2f);
-            DisplayNextSentence();
+            AutomaticClick();
         }
 
-        else
+        else // will be displayed for player to progress to next element in queue if bool is false 
         {
             Button.SetActive(true);
         }
@@ -173,7 +172,6 @@ public class DialogueSystem : MonoBehaviour
 
     void EndDialogue() // will end the dialogue by setting bool to false allowing the for loop in dialogue manager to move the i to the next position
     {
-        // character.SetActive(false);
         Charname.text = "";
         description.text = "";
         end = true;

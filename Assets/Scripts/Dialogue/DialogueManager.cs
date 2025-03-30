@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
       yield return StartCoroutine(info.LoadData());
         if (info.DialogueData.Characters != null || info.DialogueData.Characters.Count > 0) // will check if data is instatiated
         {
-            StartCoroutine(Dialogue());
+            StartCoroutine(Dialogue()); // will only start the dialogue sequence once all the data from the json file has been transfered 
         }
         else
         {
@@ -44,7 +44,7 @@ public class DialogueManager : MonoBehaviour
     {
         for (int i = 0; i < name.Length; i++) // this will be made so many different characters can speak to each other
         {
-            //start = GetComponents<DialogueSystem>();
+            
             start.StartDialogue(name[i]);
             Debug.Log(i);
             while (!start.end) // if the end bool is still false this will freeze the loop so the Queue can finish in DialogueSystem
@@ -52,20 +52,19 @@ public class DialogueManager : MonoBehaviour
                 yield return null;
             }
             start.end = true;
-            // if true the next character will speak 
-            //SceneManager.LoadScene(Nextscene);
-            SkipDialogue();
+          
+            SkipDialogue(); // will go to the next scene once dialogue cutscene has finished 
         }
 
        
 
     }
 
-    public void SkipDialogue()
+    public void SkipDialogue() // loads the next scene and allows player to skip diagoue cutscene 
     {
         LevelManager.instance.LoadScene(Nextscene);
     }
 
-    // Update is called once per frame
+   
    
 }

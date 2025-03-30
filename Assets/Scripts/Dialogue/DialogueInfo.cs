@@ -9,27 +9,22 @@ using UnityEngine.Windows;
 
 public class DialogueInfo : MonoBehaviour
 {
-    // Start is called before the first frame update
     
-   public DialogueData DialogueData= new DialogueData();
-    public void Start()
-    {
-       // LoadData();
-    }
+    
+   public DialogueData DialogueData= new DialogueData(); // creates a new object to contain the json's file data 
+
     public IEnumerator LoadData()
     {
-        // string filepath = "Assets/Assets/StreamingAssets/JSONText.txt"; // the location of the json file
-        // string filepath = Application.streamingAssetsPath + "/JSONText.txt";
-        //   string filepath = Resources.Load<TextAsset>("");
-        string filepath = Path.Combine(Application.streamingAssetsPath, "JSONText.txt");
+       
+        string filepath = Path.Combine(Application.streamingAssetsPath, "JSONText.txt"); // will find Json file through the streaming assets folder 
 
-        if (System.IO.File.Exists(filepath))
+        if (System.IO.File.Exists(filepath)) // checks if the the josn file exisits 
         {
             string DialogueD = System.IO.File.ReadAllText(filepath);
            
             // uses a couritne to load data so it isn't null errored
 
-            if (!string.IsNullOrEmpty(DialogueD))
+            if (!string.IsNullOrEmpty(DialogueD)) // will check if data in josn file isn't null
             {
                 DialogueData = JsonUtility.FromJson<DialogueData>(DialogueD); // converts the json data to the variables in dialogueData
                 Debug.Log("successfully loaded");
@@ -37,7 +32,7 @@ public class DialogueInfo : MonoBehaviour
 
             else
             {
-                Debug.Log("Dialogue data successfully loaded.");
+                Debug.Log("Dialogue data not successfully loaded.");
             }
 
         }
@@ -47,7 +42,7 @@ public class DialogueInfo : MonoBehaviour
             Debug.Log("File is missing");
         }
 
-        yield return null;
+        yield return null; // will return null if not file was found 
         
     }
 
@@ -60,7 +55,7 @@ public class DialogueInfo : MonoBehaviour
 [System.Serializable]
 public class DialogueData
 {
-    public List<People> Characters; // this is so we can add more than one character in the dialougue 
+    public List<People> Characters; // this is so we can add more than one dialgoue cutscene in the json file
 }
 
 
@@ -69,32 +64,27 @@ public class People
 {
     public string id;
    // public string name;
-    public List<DialogueNames> character;
-    public List<DialogueLines> data;
-    public List<DialogueImages> images;// this is made so there can be many dialogue for the character to speak and it can contain many strings instead of one
+    public List<DialogueNames> character; // list to contain all the names that will be displayed for each character
+    public List<DialogueLines> data; // this is made so there can be many dialogue for the character to speak and it can contain many strings instead of one
+    public List<DialogueImages> images; // list made to contain all the images for the dialgoue sequence
 }
 
 [System.Serializable]
-public class DialogueNames{
+public class DialogueNames{ // this will be the string that will dsiplay the characters name 
     public string name;
 }
 
 [System.Serializable]
-public class DialogueLines
+public class DialogueLines // this be the string element for the dialogue
 {
     public string Text;
 }
 
 [System.Serializable]
-public class DialogueImages{
+public class DialogueImages{ // this will contain the image name of the sprite to be displayed through the streaming assets 
     public string picture;
 }
 
-// https://www.youtube.com/watch?v=pVXEUtMy_Hc
-// https://www.youtube.com/watch?v=XbdnG__wzZ8
-// https://www.youtube.com/watch?v=lFp8Z_3wa7M
-// https://www.dafont.com/racing-engine-brake.font 
-// https://www.dafont.com/racing-car.font?text=sci-fi 
-// https://gran-turismo.fandom.com/wiki/Pit_lane
+
 
 
