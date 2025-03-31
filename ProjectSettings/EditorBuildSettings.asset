@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Checkpoint Race Dialogue.unity
     guid: 5de3ac3c1e9e0ff41a4b05722c43b788
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OldCheckpoint Race.unity
     guid: a54eeda668f52ef4cab5eefd6e9d224e
   - enabled: 1
@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Advanced Race.unity
     guid: edfddfec122a3a1478914f288a4120be
   - enabled: 1
-    path: Assets/Scenes/Test Track.unity
+    path: Assets/Scenes/Checkpoint Race.unity
     guid: 54d33b8cd6431de4488b5d497bd7badf
   m_configObjects: {}

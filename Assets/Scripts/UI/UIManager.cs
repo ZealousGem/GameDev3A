@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
     }
     public void ShowGameFinishedMenu(bool won)
     {
-        ;
+        
         ShowCanvas(gameFinishedMenu);
         Time.timeScale = 0f;
 

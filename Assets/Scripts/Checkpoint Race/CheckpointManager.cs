@@ -47,13 +47,7 @@ public class CheckpointManager : MonoBehaviour
 
     }
 
-    // Returns the next checkpoint the player needs to reach
-    //need to check as their are no referencces
-    //public Transform GetNextCheckpoint()
-    //{
-    //    return currentCheckpoint;
-        
-    //}
+    
 
     // Called when a player reaches a checkpoint
     public void CheckpointReached(Transform checkpoint)

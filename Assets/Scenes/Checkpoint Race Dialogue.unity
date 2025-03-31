@@ -1067,7 +1067,7 @@ MonoBehaviour:
   name:
   - 1
   info: {fileID: 1076172307}
-  Nextscene: Test Track
+  Nextscene: Checkpoint Race
 --- !u!114 &1076172307
 MonoBehaviour:
   m_ObjectHideFlags: 0

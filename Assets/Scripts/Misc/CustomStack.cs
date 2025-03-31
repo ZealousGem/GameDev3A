@@ -26,8 +26,9 @@ public class CustomStack<T>
 
     public T Peek()
     {
-        // Retrieves the last element in the list (top of the stack)
+        
         return elements[elements.Count - 1];
+        // Retrieves the last element in the list (top of the stack)
     }
     public bool IsEmpty()
     {
