@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Checkpoint Race Dialogue.unity
     guid: 5de3ac3c1e9e0ff41a4b05722c43b788
   - enabled: 0
-    path: Assets/Scenes/OldCheckpoint Race.unity
+    path: Assets/Scenes/Max scene.unity
     guid: a54eeda668f52ef4cab5eefd6e9d224e
   - enabled: 1
     path: Assets/Scenes/Beginner Race Dialogue.unity
