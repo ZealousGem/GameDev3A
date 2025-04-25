@@ -6,17 +6,25 @@ using UnityEngine;
 public class AIRacerFactory : RacerFactory
 {
 
+    private GameObject[] prefabs;
+
+    public AIRacerFactory(GameObject[] prefabs)
+    {
+        this.prefabs = prefabs;
+    }
+
     public override AIRacer CreateRacer(int type)
     {
-
-        switch(type)
+        AIRacer racer;
+        switch (type)
         {
-            case 0: return new ARacer();
-            case 1: return new BRacer();
-            case 2: return new CRacer();
-            //default: return new AIRacer();
+            case 0: racer = new ARacer(); break;
+            case 1: racer = new BRacer(); break;
+            case 2: racer = new CRacer(); break;
             default: throw new ArgumentException("Invalid racer type.");
         }
+        racer.ModelPrefab = prefabs[type];
+        return racer;
     }
     
 }
