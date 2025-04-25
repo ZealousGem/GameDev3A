@@ -6,47 +6,60 @@ using UnityEngine.AI;
 
 
 
-[System.Serializable]
-public class WayPointNode
-{
-    public Vector3 pos;
-    public WayPointNode nextNode;
 
-
-    public WayPointNode(Vector3 pos)
-    {
-        this.pos = pos;
-    }
-
-}
 public class WayPointManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
     public List<WayPointNode> Waypoints;
-   public NavMeshAgent[] agent;
-    public GameObject waypointPrefab;
+    public GameObject[] waypointPrefab;
+    int index;
 
-    Vector3 mousePos;
+   
 
     [ContextMenu("Add Waypoint")]
     public void addWaypoint()
     {
-        mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
-        WayPointNode node = new WayPointNode(mousePos);
-        
-        Waypoints.Add(node);
-       
-      
 
-        CreatePoint(node);
+        if (waypointPrefab == null || waypointPrefab.Length == 0)
+        {
+            Debug.Log("not set");
+            return;
+        }
+        for (int i = 0; i < waypointPrefab.Length; i++)
+        {   
+            GameObject obj = waypointPrefab[i];
+            Vector3 postion = obj.transform.position;
+            WayPointNode node = new WayPointNode(postion, obj);
+            Waypoints.Add(node);
+        }
+
+
+
+        for (int i = 0; i < Waypoints.Count; i++)// links nodes
+        {
+            Waypoints[i].nextNode = (i + 1 < Waypoints.Count) ? Waypoints[i+1] : Waypoints[0];
+        }
+       
     }
 
-    void CreatePoint(WayPointNode point)
+    private void Start()
+    {
+        //StartCoroutine(inDelay());
+        addWaypoint();
+    }
+
+    IEnumerator inDelay()
+    {
+        yield return null;
+        
+    }
+
+   /* void CreatePoint(WayPointNode point)
     {
         if(waypointPrefab != null)
         {
-           GameObject waypointOb = Instantiate(waypointPrefab, point.pos, Quaternion.identity, transform);
+           //GameObject waypointOb = Instantiate(waypointPrefab, point.pos, Quaternion.identity, transform);
             
 
         }
@@ -70,6 +83,6 @@ public class WayPointManager : MonoBehaviour
     public void MoveWaypoint(int id, Vector3 newPos)
     {
         UpdateWayPoint(id, newPos);
-    }
+    } */
 
 }
