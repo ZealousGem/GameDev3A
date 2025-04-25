@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -10,15 +11,16 @@ using UnityEngine.AI;
 public class WayPointManager : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public List<WayPointNode> Waypoints;
-    public GameObject[] waypointPrefab;
-    int index;
+    [HideInInspector]
+    public List<WayPointNode> Waypoints; // list contain all the nodes
+   
+    public GameObject[] waypointPrefab; // contains all the gameobject points in the track
+   
 
    
 
-    [ContextMenu("Add Waypoint")]
-    public void addWaypoint()
+    
+    public void addWaypoint() 
     {
 
         if (waypointPrefab == null || waypointPrefab.Length == 0)
@@ -26,7 +28,7 @@ public class WayPointManager : MonoBehaviour
             Debug.Log("not set");
             return;
         }
-        for (int i = 0; i < waypointPrefab.Length; i++)
+        for (int i = 0; i < waypointPrefab.Length; i++) // will instiaite the node through a loop by grabbing the object and it's location
         {   
             GameObject obj = waypointPrefab[i];
             Vector3 postion = obj.transform.position;
@@ -36,7 +38,7 @@ public class WayPointManager : MonoBehaviour
 
 
 
-        for (int i = 0; i < Waypoints.Count; i++)// links nodes
+        for (int i = 0; i < Waypoints.Count; i++)// links nodes together
         {
             Waypoints[i].nextNode = (i + 1 < Waypoints.Count) ? Waypoints[i+1] : Waypoints[0];
         }
@@ -55,34 +57,6 @@ public class WayPointManager : MonoBehaviour
         
     }
 
-   /* void CreatePoint(WayPointNode point)
-    {
-        if(waypointPrefab != null)
-        {
-           //GameObject waypointOb = Instantiate(waypointPrefab, point.pos, Quaternion.identity, transform);
-            
-
-        }
-    }
-
-    public void UpdateWayPoint(int index, Vector3 pos)
-    {
-        if (index >= 0 && index < Waypoints.Count)
-        {
-            Waypoints[index].pos = pos;
-        }
-
-        else
-        {
-            Waypoints[1].pos = pos;
-            index = 1;
-        }
-    }
-
-
-    public void MoveWaypoint(int id, Vector3 newPos)
-    {
-        UpdateWayPoint(id, newPos);
-    } */
+  
 
 }

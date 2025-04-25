@@ -17,7 +17,7 @@ public class RacingAI : MonoBehaviour
     {
          agent = GetComponent<NavMeshAgent>();
 
-        if (manager.Waypoints.Count > 0)
+        if (manager.Waypoints.Count > 0) // will actvate the first node in the list
         {
             curNode = manager.Waypoints[0];
             MoveCar();
@@ -29,7 +29,7 @@ public class RacingAI : MonoBehaviour
     void Update()
     {
      
-      NextNode();
+      NextNode(); // will change the nodes to the next one
     //  Debug.Log(index);
 
     }
@@ -38,39 +38,34 @@ public class RacingAI : MonoBehaviour
     {
         if (curNode == null) return;
        
-            WayPoint = curNode.pos;
+            WayPoint = curNode.pos; // the next nodes location
             GameObject Waypoit = curNode.obj;
-            transform.LookAt(WayPoint);
+           // transform.LookAt(WayPoint);
           
         //Debug.Log(curNode.obj);
-             agent.destination = WayPoint;
+             agent.destination = WayPoint; // heads to the next location
 
-      
-        if (Waypoit.CompareTag("Checkpoint") && agent.speed != 10)
+
+        if (Waypoit.CompareTag("Checkpoint"))
+        {
+            if (agent.speed != 10f)
             {
-                agent.speed -= 10f;
+                agent.speed = Mathf.Lerp(agent.speed, 10f, Time.deltaTime * 10f); // reduces speed by 10f
+            }
 
+
+        }
+
+        else
+        {
+            if (agent.speed != speed)
+            {
+                agent.speed = Mathf.Lerp(agent.speed, 50f, Time.deltaTime * 10f); // increases speed by 10f
 
             }
 
-            else
-            {
-                if (agent.speed != speed)
-                {
-                    agent.speed += 10f;
-                   
-                }
 
-                else
-                {
-
-               
-                        agent.speed = speed;
-                     
-                    
-                   
-                }
-            }
+        }
 
         
        
@@ -79,7 +74,7 @@ public class RacingAI : MonoBehaviour
     public void NextNode()
     {
        // Debug.Log("NextNode() called");
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance) // won't change to next node until the agent has reached the currentnodes co-ords
         {
             if (curNode != null)
             {
@@ -90,6 +85,7 @@ public class RacingAI : MonoBehaviour
                     curNode = manager.Waypoints[0];
                 }
                 MoveCar();
+                Debug.Log(agent.speed);
             }
           
         }
