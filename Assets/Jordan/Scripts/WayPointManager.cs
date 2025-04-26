@@ -45,7 +45,7 @@ public class WayPointManager : MonoBehaviour
        
     }
 
-    private void Start()
+    private void Awake()
     {
         //StartCoroutine(inDelay());
         addWaypoint();

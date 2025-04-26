@@ -11,25 +11,29 @@ public class RacingAI : MonoBehaviour
     WayPointNode curNode;
     int index = 0;
     Vector3 WayPoint;
-    public WayPointManager manager;
-    float speed = 50f;
+    WayPointManager manager;
+    public float Topspeed;
+    public  float BrakeSpeed;
+    float curSpeed;
     void Start()
     {
          agent = GetComponent<NavMeshAgent>();
-
+        manager = FindObjectOfType<WayPointManager>();
         if (manager.Waypoints.Count > 0) // will actvate the first node in the list
         {
             curNode = manager.Waypoints[0];
             MoveCar();
         }
-        
     }
+
+       
+       
 
     // Update is called once per frame
     void Update()
     {
-     
-      NextNode(); // will change the nodes to the next one
+        agent.speed = Mathf.Lerp(agent.speed, curSpeed, Time.deltaTime * 2);
+        NextNode(); // will change the nodes to the next one
     //  Debug.Log(index);
 
     }
@@ -48,21 +52,19 @@ public class RacingAI : MonoBehaviour
 
         if (Waypoit.CompareTag("Checkpoint"))
         {
-            if (agent.speed != 10f)
-            {
-                agent.speed = Mathf.Lerp(agent.speed, 10f, Time.deltaTime * 10f); // reduces speed by 10f
-            }
 
+           
+
+            curSpeed = BrakeSpeed;  // reduces speed by 10f
 
         }
 
         else
         {
-            if (agent.speed != speed)
-            {
-                agent.speed = Mathf.Lerp(agent.speed, 50f, Time.deltaTime * 10f); // increases speed by 10f
 
-            }
+            curSpeed = Topspeed; // increases speed by 10f
+
+            
 
 
         }
