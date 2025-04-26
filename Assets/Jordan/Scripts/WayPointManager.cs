@@ -12,8 +12,7 @@ public class WayPointManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [HideInInspector]
-    public List<WayPointNode> Waypoints; // list contain all the nodes
-   
+    public CustomLinkedList Waypoints; // linkedlist that will contain the nodes of all the waypoints
     public GameObject[] waypointPrefab; // contains all the gameobject points in the track
    
 
@@ -37,10 +36,9 @@ public class WayPointManager : MonoBehaviour
         }
 
 
-
-        for (int i = 0; i < Waypoints.Count; i++)// links nodes together
+        if (Waypoints.tail != null) // makes a circular list by making the tails nextNode equal the head instead of it becoming null to end the list 
         {
-            Waypoints[i].nextNode = (i + 1 < Waypoints.Count) ? Waypoints[i+1] : Waypoints[0];
+            Waypoints.tail.nextNode = Waypoints.head;
         }
        
     }
@@ -48,10 +46,11 @@ public class WayPointManager : MonoBehaviour
     private void Awake()
     {
         //StartCoroutine(inDelay());
+        Waypoints = new CustomLinkedList(); // makes a new linked list once it's awake
         addWaypoint();
     }
 
-    IEnumerator inDelay()
+    IEnumerator inDelay() // useless method, will delete later
     {
         yield return null;
         

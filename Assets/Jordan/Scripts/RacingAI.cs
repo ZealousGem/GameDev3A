@@ -19,10 +19,10 @@ public class RacingAI : MonoBehaviour
     {
          agent = GetComponent<NavMeshAgent>();
         manager = FindObjectOfType<WayPointManager>();
-        if (manager.Waypoints.Count > 0) // will actvate the first node in the list
+        if (manager.Waypoints.Count() > 0) // will actvate the first node in the linkedlist
         {
-            curNode = manager.Waypoints[0];
-            MoveCar();
+            curNode = manager.Waypoints.NodeAcess(0); // sets waypointnode to the head node in the linkedlist 
+            MoveCar(); // actviates movement for ai to head to waypointnodes position 
         }
     }
 
@@ -32,7 +32,7 @@ public class RacingAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.speed = Mathf.Lerp(agent.speed, curSpeed, Time.deltaTime * 2);
+        agent.speed = Mathf.Lerp(agent.speed, curSpeed, Time.deltaTime * 2); // changes ai speed to desired current speed
         NextNode(); // will change the nodes to the next one
     //  Debug.Log(index);
 
@@ -50,7 +50,7 @@ public class RacingAI : MonoBehaviour
              agent.destination = WayPoint; // heads to the next location
 
 
-        if (Waypoit.CompareTag("Checkpoint"))
+        if (Waypoit.CompareTag("Checkpoint")) // will slow down if the waypoint has a checkpoint tag
         {
 
            
@@ -80,14 +80,14 @@ public class RacingAI : MonoBehaviour
         {
             if (curNode != null)
             {
-                curNode = curNode.nextNode;
+                curNode = curNode.nextNode; // moves to nextNode
 
-                if (curNode == manager.Waypoints[manager.Waypoints.Count - 1])
+                if (curNode == manager.Waypoints.head) // checks if the linkedlist loop has reset 
                 {
-                    curNode = manager.Waypoints[0];
+                    curNode = manager.Waypoints.head;
                 }
                 MoveCar();
-                Debug.Log(agent.speed);
+               // Debug.Log(agent.speed);
             }
           
         }
