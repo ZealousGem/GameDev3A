@@ -13,8 +13,8 @@ public class RacingAI : MonoBehaviour
     Vector3 WayPoint;
     WayPointManager manager;
     public float Topspeed;
-    public  float BrakeSpeed;
-    float curSpeed;
+    public float BrakeSpeed;
+    public float curSpeed;
     void Start()
     {
          agent = GetComponent<NavMeshAgent>();

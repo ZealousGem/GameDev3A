@@ -13,10 +13,10 @@ public class RacerSpawner : MonoBehaviour
     void Start()
     {
         GameObject[] prefabTypes = { ARacerPrefab, BRacerPrefab, CRacerPrefab };
-        //RacerFactory factory = new AIRacerFactory();
+        
 
         RacerFactory factory = new AIRacerFactory(prefabTypes);
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < spawnPoints.Length; i++)
         {
             int type = i % 3;
 
@@ -30,6 +30,14 @@ public class RacerSpawner : MonoBehaviour
             //GameObject instance = Instantiate(racer.ModelPrefab, spawnPoints[i].position, spawnPoints[i].rotation);
             //instance.name = racer.RacerName;
 
+            RacingAI racingAI = instance.GetComponent<RacingAI>();
+            if (racingAI != null)
+            {
+                Debug.Log("in racespawner, before change racingAi topspeed is" + racingAI.Topspeed + "and racer speed is" + racer.Speed);
+                racingAI.Topspeed = racer.Speed;
+                racingAI.BrakeSpeed = racer.Brake;
+
+            }
 
         }
 

@@ -7,7 +7,10 @@ public class ARacer : AIRacer
     public ARacer()
     {
         RacerName = "ARacer";
-        Speed = 10;
+        Speed = 45;
+        Brake = 10;
+
+        Debug.Log("base speed of"+ RacerName + "is" + Speed);
         //ModelPrefab = Resources.Load<GameObject>("Assets/Max/ARacerTest.prefab");
 
     }
