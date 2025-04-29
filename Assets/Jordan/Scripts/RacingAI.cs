@@ -16,11 +16,16 @@ public class RacingAI : MonoBehaviour, PosCounter
     public  float BrakeSpeed;
     float curSpeed;
 
+    public string Carname;
+
     [HideInInspector]
     public int counter { get; set; }
-    public string name;
+    public float DistancefromWaypoint { get; set; }
+    public string name { get; set; }
+
     void Start()
     {
+         name = Carname;
          counter = 0;
          agent = GetComponent<NavMeshAgent>();
         manager = FindObjectOfType<WayPointManager>();
@@ -43,16 +48,21 @@ public class RacingAI : MonoBehaviour, PosCounter
 
     }
 
+    public void DistFromCheckPoint()
+    {
+        DistancefromWaypoint = Vector3.Distance(transform.position, WayPoint);
+    }
+
     public void MoveCar()
     {
         if (curNode == null) return;
        
             WayPoint = curNode.pos; // the next nodes location
             GameObject Waypoit = curNode.obj;
-           // transform.LookAt(WayPoint);
-          
+        // transform.LookAt(WayPoint);
+        DistFromCheckPoint();
         //Debug.Log(curNode.obj);
-             agent.destination = WayPoint; // heads to the next location
+        agent.destination = WayPoint; // heads to the next location
 
 
         if (Waypoit.CompareTag("Checkpoint")) // will slow down if the waypoint has a checkpoint tag
@@ -85,7 +95,9 @@ public class RacingAI : MonoBehaviour, PosCounter
         {
             if (curNode != null)
             {
-                curNode = curNode.nextNode; // moves to nextNode
+                curNode = curNode.nextNode;
+               
+                // moves to nextNode
 
                 if (curNode == manager.Waypoints.head) // checks if the linkedlist loop has reset 
                 {
