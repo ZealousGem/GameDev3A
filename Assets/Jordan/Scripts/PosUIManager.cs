@@ -9,23 +9,27 @@ public class PosUIManager : MonoBehaviour
 
     public TMP_Text[] text;
     public TMP_Text leaderboardT;
+    public TMP_Text Laps;
     public LeaderBoardManager LeaderBoardManager;
+    
     // Update is called once per frame
     void Update()
     {
        
     }
 
-    private void Start()
+    private void Start() // displays the start postions of the cars from the leaderboard mamanger
     {
         for (int i = 0; i < LeaderBoardManager.cars.Length; i++)
         {
             int pos = LeaderBoardManager.position[i].position;
             text[i].text = pos.ToString();
         }
+
+        LapUI(0);
     }
 
-  public void ChangePosUI(GameObject car)
+  public void ChangePosUI(GameObject car) // this is will change the cars ui position above the car and will only change if their name is compared in the new list 
     {
        
         for (int i = 0; i < LeaderBoardManager.cars.Length; i++)
@@ -53,7 +57,7 @@ public class PosUIManager : MonoBehaviour
 
 
 
-    public void LeaaderBoardUpdate(List<LeaderBoard> leaderboard)
+    public void LeaaderBoardUpdate(List<LeaderBoard> leaderboard) // updates the leaderboard ui by concatinating the string 
     {
         string texts = "";
         for (int i = 0; i < leaderboard.Count; i++)
@@ -62,6 +66,11 @@ public class PosUIManager : MonoBehaviour
         }
 
         leaderboardT.text = texts;
+    }
+
+    public void LapUI(int laps)
+    {
+        Laps.text ="Laps: " +laps +"/3";
     }
 }
 

@@ -97,7 +97,7 @@ public class RacingAI : MonoBehaviour, PosCounter
         {
             if (curNode != null)
             {
-                counter++;
+                counter++; // updates  the counter to determine what position the car is in
                 curNode = curNode.nextNode;
                
                 // moves to nextNode

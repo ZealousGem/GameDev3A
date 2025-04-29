@@ -6,8 +6,7 @@ public class PositionCounter : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    RacingAI Car;
-    Playercontroller Player;
+  
     LeaderBoardManager LeaderBoardManager;
    
 
@@ -18,18 +17,21 @@ public class PositionCounter : MonoBehaviour
         LeaderBoardManager = GameObject.FindWithTag("EditorOnly").GetComponent <LeaderBoardManager>();
 
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)  // if the waypoint has been collided by a car the leaderboard manager will be called to update the leaderboard
+
     {
         if (other.GetComponent<RacingAI>())
         {
             
             LeaderBoardManager.UpdateList();
-          
+
         }
 
         else if (other.GetComponent<Playercontroller>())
         {
-            Player = other.GetComponent<Playercontroller>();
+
+            //LeaderBoardManager.UpdateList();
+            //Player = other.GetComponent<Playercontroller>();
         }
     }
 }
