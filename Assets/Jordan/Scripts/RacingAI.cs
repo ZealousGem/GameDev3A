@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RacingAI : MonoBehaviour
+public class RacingAI : MonoBehaviour, PosCounter
 {
     // Start is called before the first frame update
     NavMeshAgent agent;
@@ -15,8 +15,13 @@ public class RacingAI : MonoBehaviour
     public float Topspeed;
     public  float BrakeSpeed;
     float curSpeed;
+
+    [HideInInspector]
+    public int counter { get; set; }
+    public string name;
     void Start()
     {
+         counter = 0;
          agent = GetComponent<NavMeshAgent>();
         manager = FindObjectOfType<WayPointManager>();
         if (manager.Waypoints.Count() > 0) // will actvate the first node in the linkedlist
