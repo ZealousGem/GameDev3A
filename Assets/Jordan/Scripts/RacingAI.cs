@@ -43,7 +43,8 @@ public class RacingAI : MonoBehaviour, PosCounter
     // Update is called once per frame
     void Update()
     {
-        agent.speed = Mathf.Lerp(agent.speed, curSpeed, Time.deltaTime * 2); // changes ai speed to desired current speed
+        agent.speed = Mathf.Lerp(agent.speed, curSpeed, Time.deltaTime * 2);
+        DistFromCheckPoint();// changes ai speed to desired current speed
         NextNode(); // will change the nodes to the next one
     //  Debug.Log(index);
 
@@ -61,7 +62,7 @@ public class RacingAI : MonoBehaviour, PosCounter
             WayPoint = curNode.pos; // the next nodes location
             GameObject Waypoit = curNode.obj;
         // transform.LookAt(WayPoint);
-        DistFromCheckPoint();
+      
         //Debug.Log(curNode.obj);
         agent.destination = WayPoint; // heads to the next location
 
@@ -96,6 +97,7 @@ public class RacingAI : MonoBehaviour, PosCounter
         {
             if (curNode != null)
             {
+                counter++;
                 curNode = curNode.nextNode;
                
                 // moves to nextNode

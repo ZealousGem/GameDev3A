@@ -22,8 +22,7 @@ public class PositionCounter : MonoBehaviour
     {
         if (other.GetComponent<RacingAI>())
         {
-            Car = other.GetComponent<RacingAI>();
-            Car.counter += 1;
+            
             LeaderBoardManager.UpdateList();
           
         }
