@@ -8,8 +8,16 @@ public class PositionCounter : MonoBehaviour
 
     RacingAI Car;
     Playercontroller Player;
-  public  LeaderBoardManager LeaderBoardManager;
+    LeaderBoardManager LeaderBoardManager;
+   
 
+
+    private void Start()
+    {
+        
+        LeaderBoardManager = GameObject.FindWithTag("EditorOnly").GetComponent <LeaderBoardManager>();
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<RacingAI>())
@@ -17,6 +25,7 @@ public class PositionCounter : MonoBehaviour
             Car = other.GetComponent<RacingAI>();
             Car.counter += 1;
             LeaderBoardManager.UpdateList();
+          
         }
 
         else if (other.GetComponent<Playercontroller>())

@@ -32,12 +32,14 @@ public class LeaderBoardManager : MonoBehaviour
     // Start is called before the first frame update
     public List<LeaderBoard> position;
     public GameObject[] cars;
-   
-   // Playercontroller controller;
+    PosUIManager ui;
+
+    // Playercontroller controller;
 
     void Start()
     {
         position = new List<LeaderBoard>();
+       
         for (int i = 0; i < cars.Length; i++)
         {
             if (cars[i].GetComponent<RacingAI>())
@@ -49,7 +51,8 @@ public class LeaderBoardManager : MonoBehaviour
             }
         }
 
-       
+        ui = GameObject.FindWithTag("EditorOnly").GetComponent<PosUIManager>();
+        ui.LeaaderBoardUpdate(position);
     }
 
     public void UpdateList()
@@ -91,9 +94,16 @@ public class LeaderBoardManager : MonoBehaviour
         {
             var pos = new LeaderBoard(progress[i].name, i +1, progress[i].distanceFromWaypoint);
             position.Add(pos);
-            Debug.Log(pos.name + ":   " + pos.position);
+           // Debug.Log(pos.name + ":   " + pos.position);
         }
-       // for()
+
+        for (int i = 0; i < cars.Length; i++)
+        {
+            ui.ChangePosUI(cars[i]);
+        }
+
+        ui.LeaaderBoardUpdate(position);
+        // for()
     }
 
     // Update is called once per frame
