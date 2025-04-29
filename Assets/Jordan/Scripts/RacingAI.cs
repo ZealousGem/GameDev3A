@@ -25,9 +25,10 @@ public class RacingAI : MonoBehaviour, PosCounter
 
     void Start()
     {
-         name = Carname;
-         counter = 0;
-         agent = GetComponent<NavMeshAgent>();
+        name = Carname;
+        counter = 0;
+        DistancefromWaypoint = 0f;
+        agent = GetComponent<NavMeshAgent>();
         manager = FindObjectOfType<WayPointManager>();
         if (manager.Waypoints.Count() > 0) // will actvate the first node in the linkedlist
         {
