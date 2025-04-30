@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1338540358204476019}
   m_Layer: 6
   m_Name: OpponentCarA
-  m_TagString: Untagged
+  m_TagString: Cars
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6537485024451491319}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.69609797, z: -0, w: 0.7179469}
+  m_LocalRotation: {x: 0, y: -0.6961008, z: 0, w: 0.7179441}
   m_LocalPosition: {x: -9.817887, y: 0, z: -14.016916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -135,12 +135,12 @@ GameObject:
   - component: {fileID: 1959956751602533068}
   - component: {fileID: 2404623097337824055}
   m_Layer: 5
-  m_Name: Position (1)
+  m_Name: 'Position '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1708371147343103190
 RectTransform:
   m_ObjectHideFlags: 0

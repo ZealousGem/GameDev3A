@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerWaypointChecker : MonoBehaviour, PosCounter
@@ -16,11 +17,13 @@ public class PlayerWaypointChecker : MonoBehaviour, PosCounter
     public int counter { get; set; }
     public float DistancefromWaypoint { get; set; }
     public string name { get; set; }
+    public TMP_Text text { get; set; }
 
     public float WaypointBorder; // a border used so the player doesnt have to reach the exact co-ords of the waypoint
 
     void Start()
     {
+        text = GameObject.FindGameObjectWithTag("UI").GetComponent<TMP_Text>();
         name = Carname;
         counter = 0;
         DistancefromWaypoint = 0f;

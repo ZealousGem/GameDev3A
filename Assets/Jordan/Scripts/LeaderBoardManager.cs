@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 
 
@@ -25,12 +27,14 @@ public interface PosCounter // an interface that can bed used to track the ai an
     public int counter { get; set; }
     public float DistancefromWaypoint{get; set;}
     public string name {  get; set; }
+
+  
 }
 
 public class LeaderBoardManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    [HideInInspector]
+   [HideInInspector]
     public List<LeaderBoard> position;
     public GameObject[] cars; // cars in the race
     PosUIManager ui; // ui that will display the leader board 
@@ -39,6 +43,11 @@ public class LeaderBoardManager : MonoBehaviour
 
     void Start()
     {
+
+        StartCoroutine(AddtoLeaderBoard());
+       
+       
+
         position = new List<LeaderBoard>();
        
         for (int i = 0; i < cars.Length; i++)
@@ -63,7 +72,17 @@ public class LeaderBoardManager : MonoBehaviour
         }
 
         ui = GameObject.FindWithTag("EditorOnly").GetComponent<PosUIManager>();
+        
         ui.LeaaderBoardUpdate(position); // updates leaderboard ui
+    }
+
+    public IEnumerator AddtoLeaderBoard()
+    {
+        yield return null;
+        List<GameObject> Tempcars = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cars"));
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+        Tempcars.Add(Player);
+        cars = Tempcars.ToArray();
     }
 
     public void UpdateList()

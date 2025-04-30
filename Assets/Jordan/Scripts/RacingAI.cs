@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 using UnityEngine.AI;
 
 public class RacingAI : MonoBehaviour, PosCounter
@@ -23,8 +24,14 @@ public class RacingAI : MonoBehaviour, PosCounter
     public float DistancefromWaypoint { get; set; }
     public string name { get; set; }
 
+   
+
     void Start()
     {
+       
+        
+       // text = GameObject.FindGameObjectWithTag(name).GetComponent<TMP_Text>();
+        Carname = gameObject.name;
         name = Carname;
         counter = 0;
         DistancefromWaypoint = 0f;

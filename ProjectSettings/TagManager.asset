@@ -7,6 +7,8 @@ TagManager:
   - Checkpoint
   - PauseMenu
   - GameFinished
+  - Cars
+  - UI
   layers:
   - Default
   - TransparentFX
