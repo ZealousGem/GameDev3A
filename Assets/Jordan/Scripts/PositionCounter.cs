@@ -31,7 +31,7 @@ public class PositionCounter : MonoBehaviour
         {
             PlayerWaypointChecker player = other.GetComponent<PlayerWaypointChecker>();
             player.nextNode();
-            //LeaderBoardManager.UpdateList();
+            LeaderBoardManager.UpdateList();
             //Player = other.GetComponent<Playercontroller>();
         }
     }
