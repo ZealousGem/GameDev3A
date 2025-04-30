@@ -48,7 +48,7 @@ public class LeaderBoardManager : MonoBehaviour
                 RacingAI ai = cars[i].GetComponent<RacingAI>();
                 LeaderBoard pos = new LeaderBoard(ai.Carname, i + 1, ai.DistancefromWaypoint);
                 position.Add(pos);
-                Debug.Log(pos.name + ":   "+ pos.position);
+               // Debug.Log(pos.name + ":   "+ pos.position);
             }
 
             else if (cars[i].GetComponent<PlayerWaypointChecker>()) // finds the car objects and adds them to the leaderboard list 
@@ -56,7 +56,7 @@ public class LeaderBoardManager : MonoBehaviour
                 PlayerWaypointChecker ai = cars[i].GetComponent<PlayerWaypointChecker>();
                 LeaderBoard pos = new LeaderBoard(ai.Carname, i + 1, ai.DistancefromWaypoint);
                 position.Add(pos);
-                Debug.Log(pos.name + ":   " + pos.position);
+              //  Debug.Log(pos.name + ":   " + pos.position);
             }
 
 

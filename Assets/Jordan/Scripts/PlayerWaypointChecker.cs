@@ -12,12 +12,12 @@ public class PlayerWaypointChecker : MonoBehaviour, PosCounter
 
     public string Carname;
 
-    [HideInInspector]
+    [HideInInspector] // interface to be used to keep track of what position the player is in
     public int counter { get; set; }
     public float DistancefromWaypoint { get; set; }
     public string name { get; set; }
 
-    public float WaypointBorder = 10f;
+    public float WaypointBorder; // a border used so the player doesnt have to reach the exact co-ords of the waypoint
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class PlayerWaypointChecker : MonoBehaviour, PosCounter
        
     }
 
-    void SetWaypoint()
+    void SetWaypoint() // changes to next waypoint
     {
         if (curNode == null) return;
         Debug.Log("Waypoint reached");
@@ -48,14 +48,14 @@ public class PlayerWaypointChecker : MonoBehaviour, PosCounter
        
     }
 
-    public void DistFromCheckPoint()
+    public void DistFromCheckPoint() // calculates player distance from the waypoint
     {
         DistancefromWaypoint = Vector3.Distance(transform.position, WayPoint);
     }
 
-  public void nextNode()
+  public void nextNode() // will change to next node once player has reached the previous waypoint
     {
-        if (DistancefromWaypoint < WaypointBorder)
+        if (DistancefromWaypoint < WaypointBorder) // will only change to next node once player has reached the waypoint threshhold
         {
             if (curNode != null)
             {
