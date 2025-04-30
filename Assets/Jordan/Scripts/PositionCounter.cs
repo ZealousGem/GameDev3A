@@ -27,9 +27,10 @@ public class PositionCounter : MonoBehaviour
 
         }
 
-        else if (other.GetComponent<Playercontroller>())
+        else if (other.GetComponent<PlayerWaypointChecker>())
         {
-
+            PlayerWaypointChecker player = other.GetComponent<PlayerWaypointChecker>();
+            player.nextNode();
             //LeaderBoardManager.UpdateList();
             //Player = other.GetComponent<Playercontroller>();
         }

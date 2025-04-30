@@ -35,7 +35,7 @@ public class PosUIManager : MonoBehaviour
         for (int i = 0; i < LeaderBoardManager.cars.Length; i++)
         {
            
-            if (car == LeaderBoardManager.cars[i] &&LeaderBoardManager.cars[i].GetComponent<RacingAI>())
+            if (car == LeaderBoardManager.cars[i] && LeaderBoardManager.cars[i].GetComponent<RacingAI>())
             {
               
                 RacingAI carUI = car.GetComponent<RacingAI>();
@@ -43,13 +43,28 @@ public class PosUIManager : MonoBehaviour
                 {
                     if (carUI.name == LeaderBoardManager.position[y].name)
                     {
-                        Debug.Log("here");
+                      //  Debug.Log("here");
                         int pos = LeaderBoardManager.position[y].position;
                         text[i].text = pos.ToString();
                         return;
                     }
                 }
                 
+            }
+
+            else if (car == LeaderBoardManager.cars[i] && LeaderBoardManager.cars[i].GetComponent<PlayerWaypointChecker>())
+            {
+                PlayerWaypointChecker carUI = car.GetComponent<PlayerWaypointChecker>();
+                for (int y = 0; y < LeaderBoardManager.position.Count; y++)
+                {
+                    if (carUI.name == LeaderBoardManager.position[y].name)
+                    {
+                        //  Debug.Log("here");
+                        int pos = LeaderBoardManager.position[y].position;
+                        text[i].text = pos.ToString();
+                        return;
+                    }
+                }
             }
           
         }

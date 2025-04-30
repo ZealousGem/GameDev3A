@@ -50,6 +50,16 @@ public class LeaderBoardManager : MonoBehaviour
                 position.Add(pos);
                 Debug.Log(pos.name + ":   "+ pos.position);
             }
+
+            else if (cars[i].GetComponent<PlayerWaypointChecker>()) // finds the car objects and adds them to the leaderboard list 
+            {
+                PlayerWaypointChecker ai = cars[i].GetComponent<PlayerWaypointChecker>();
+                LeaderBoard pos = new LeaderBoard(ai.Carname, i + 1, ai.DistancefromWaypoint);
+                position.Add(pos);
+                Debug.Log(pos.name + ":   " + pos.position);
+            }
+
+
         }
 
         ui = GameObject.FindWithTag("EditorOnly").GetComponent<PosUIManager>();
@@ -74,6 +84,13 @@ public class LeaderBoardManager : MonoBehaviour
                 Carname = carAi.name;
                 count = carAi.counter;
                 dist = carAi.DistancefromWaypoint;
+            }
+
+            else if (car.TryGetComponent<PlayerWaypointChecker>(out var Player))
+            {
+                Carname = Player.name;
+                count = Player.counter;
+                dist = Player.DistancefromWaypoint;
             }
 
             LeaderBoard temp = new LeaderBoard(Carname, count, dist); // once found the data from the ai or the player will be added into a new list with the struct
@@ -108,8 +125,5 @@ public class LeaderBoardManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-      
-    }
+    
 }
