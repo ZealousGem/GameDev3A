@@ -6,7 +6,7 @@ public class ARacer : AIRacer
 {
     public ARacer()
     {
-        RacerName = "SedanRacer";
+        RacerName = "Sedan";
         Speed = 45;
         Brake = 15;
 

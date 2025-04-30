@@ -6,7 +6,7 @@ public class BRacer : AIRacer
 {
     public BRacer()
     {
-        RacerName = "MuscleRacer";
+        RacerName = "Muscle";
         Speed = 40;
         Brake = 10;
         //ModelPrefab = Resources.Load<GameObject>("Assets/Max/BRacerTest.prefab");
