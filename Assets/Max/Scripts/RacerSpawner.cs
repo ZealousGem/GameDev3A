@@ -9,6 +9,10 @@ public class RacerSpawner : MonoBehaviour
     public GameObject ARacerPrefab;
     public GameObject BRacerPrefab;
     public GameObject CRacerPrefab;
+    private readonly string[] nameSuffixes =
+    {
+        "Alpha","Turbo","Viper", "Dash","Omega","Thunder"
+    };
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +27,8 @@ public class RacerSpawner : MonoBehaviour
             AIRacer racer = factory.CreateRacer(type);
 
             GameObject instance = Instantiate(racer.ModelPrefab, spawnPoints[i].position, spawnPoints[i].rotation);
-            instance.name = racer.RacerName;
+            string uniqueName=racer.RacerName+" "+GetRandomSuffix();
+            instance.name = uniqueName;
             //int type = i % 3; // Rotate between 0,1,2
             //AIRacer racer = factory.CreateRacer(type);
             //racer.Initialize();
@@ -42,19 +47,11 @@ public class RacerSpawner : MonoBehaviour
         }
 
     }
-    private AIRacer CreateRacerByType(int type)
+    private string GetRandomSuffix()
     {
-        switch (type)
-        {
-            case 0: return new ARacer();
-            case 1: return new BRacer();
-            case 2: return new CRacer();
-            default:
-                return new ARacer();
-
-        }
-
+        return nameSuffixes[Random.Range(0, nameSuffixes.Length)];
     }
+    
 
     // Update is called once per frame
     void Update()

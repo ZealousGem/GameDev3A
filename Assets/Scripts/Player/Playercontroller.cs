@@ -5,8 +5,8 @@ using UnityEngine;
 public class Playercontroller : MonoBehaviour
 {
 
-    public float acceleration = 1;
-    private float maxSpeed = 140;
+    public float acceleration = 15;
+    private float maxSpeed = 140 ;
     public float baseTurnSpeed = 100;
     // Base turn speed when moving at full speed
 

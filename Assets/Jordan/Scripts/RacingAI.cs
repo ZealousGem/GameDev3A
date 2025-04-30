@@ -15,7 +15,7 @@ public class RacingAI : MonoBehaviour, PosCounter
     WayPointManager manager;
     public float Topspeed;
     public  float BrakeSpeed;
-    float curSpeed;
+    public float curSpeed;
 
     public string Carname;
 
