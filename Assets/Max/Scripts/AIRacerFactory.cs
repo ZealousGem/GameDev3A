@@ -7,6 +7,10 @@ public class AIRacerFactory : RacerFactory
 {
 
     private GameObject[] prefabs;
+    private readonly string[] nameSuffixes =
+    {
+        "Alpha","Turbo","Viper", "Dash","Omega","Thunder"
+    };
 
     public AIRacerFactory(GameObject[] prefabs)
     {
@@ -24,7 +28,13 @@ public class AIRacerFactory : RacerFactory
             default: throw new ArgumentException("Invalid racer type.");
         }
         racer.ModelPrefab = prefabs[type];
+        string suffix = GetRandomSuffix();
+        racer.RacerName += " " + suffix;
         return racer;
     }
-    
+    private string GetRandomSuffix()
+    {
+        return nameSuffixes[UnityEngine.Random.Range(0, nameSuffixes.Length)];
+    }
+
 }
