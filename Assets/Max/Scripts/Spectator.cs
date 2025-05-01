@@ -17,7 +17,7 @@ public class Spectator : MonoBehaviour
     {
         animator= GetComponent<Animator>();
 
-        animator.SetFloat("Offset", Random.Range(0,1));
+        //animator.SetFloat("Offset", Random.Range(0,1));
 
         SpectatorState randomState = GetRandomState();
 
@@ -45,21 +45,38 @@ public class Spectator : MonoBehaviour
     private void ChangeState(SpectatorState newState)
     {
         currentState = newState;
+        //Debug.Log("Changed to state: " + newState.GetType().Name);
         currentState.Enter(this);
         stateTimer=Random.Range(minTime,maxTime);
-
+        //Debug.Log(stateTimer);
     }
     private SpectatorState GetRandomState()
     {
-        int random=Random.Range(0,3);
 
-        switch(random)
+       
+
+        while(true)
         {
-            case 0:return new AState();
-            case 1:return new BState();
-            case 2:return new CState();
-                default: return null;
-        }
-        
+            int random = Random.Range(0, 3);
+
+            SpectatorState newState = random switch
+            {
+            0 => new AState(),
+            1 => new BState(),
+            2 => new CState(),
+            _ => null
+            };
+
+
+            if (newState.GetType() != currentState?.GetType())
+            {
+                return newState;
+            }
+
+        } 
+
+       
+
+
     }
 }
