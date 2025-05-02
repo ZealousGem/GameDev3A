@@ -12,7 +12,11 @@ public class LapCounter : MonoBehaviour
     // Start is called before the first frame update
 
    [HideInInspector]
-    public int LapCount; // keeps track of laps in the race
+    public int LapCount;
+    public UIManager endGameMenu;
+    public GameObject inGameUI;
+    public GameObject SpeedUI;
+    // keeps track of laps in the race
     PosUIManager PosUIManager;
     void Start()
     {
@@ -24,13 +28,15 @@ public class LapCounter : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (LapCount < 3)
+            /*if (LapCount < 3)
             {
                 LapCount += 1;
                 PosUIManager.LapUI(LapCount);
-            }
+                
+            }*/
+            GameObject obj = other.gameObject;
+            ChangeLaps(obj);
 
-           
         }
     }
 
@@ -39,11 +45,33 @@ public class LapCounter : MonoBehaviour
         if (car.GetComponent<RacingAI>())
         {
             // will add their own lap count once merged
+            RacingAI carLap = car.GetComponent<RacingAI>();
+            if (carLap.Laps < 3)
+            {
+                carLap.Laps += 1;
+            }
+           
         }
 
-        else if (car.GetComponent<Playercontroller>())
+        else if (car.GetComponent<PlayerWaypointChecker>())
         {
-          // will add their own lap count once merged
+            PlayerWaypointChecker playerWaypointChecker = car.GetComponent<PlayerWaypointChecker>();
+            if (playerWaypointChecker.Laps > 3)
+            {
+                endGameMenu.ShowGameFinishedMenu(true);
+                inGameUI.SetActive(false);
+                SpeedUI.SetActive(false);
+                PosUIManager.ShowLeaderBoardEnd();
+            }
+
+            else
+            {
+                PosUIManager.LapUI(playerWaypointChecker.Laps);
+                playerWaypointChecker.Laps += 1;
+            }
+            
+            
+            // will add their own lap count once merged
 
         }
     }

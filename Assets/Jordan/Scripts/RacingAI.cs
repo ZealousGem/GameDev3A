@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.AI;
 
-public class RacingAI : MonoBehaviour, PosCounter
+public class RacingAI : MonoBehaviour, PosCounter, Lapcount
 {
     // Start is called before the first frame update
     NavMeshAgent agent;
@@ -24,7 +24,7 @@ public class RacingAI : MonoBehaviour, PosCounter
     public float DistancefromWaypoint { get; set; }
     public string name { get; set; }
 
-   
+    public int Laps { get; set; }
 
     void Start()
     {
@@ -35,6 +35,7 @@ public class RacingAI : MonoBehaviour, PosCounter
         name = Carname;
         counter = 0;
         DistancefromWaypoint = 0f;
+        Laps = 0;
         agent = GetComponent<NavMeshAgent>();
         manager = FindObjectOfType<WayPointManager>();
         if (manager.Waypoints.Count() > 0) // will actvate the first node in the linkedlist

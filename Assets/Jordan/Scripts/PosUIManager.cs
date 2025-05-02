@@ -12,6 +12,8 @@ public class PosUIManager : MonoBehaviour
     public TMP_Text leaderboardT;
     public TMP_Text Laps;
     public LeaderBoardManager LeaderBoardManager;
+
+    public TMP_Text leaderboardUI;
     
     // Update is called once per frame
     void Update()
@@ -73,6 +75,12 @@ public class PosUIManager : MonoBehaviour
         }
 
         leaderboardT.text = texts;
+        
+    }
+
+    public void ShowLeaderBoardEnd()
+    {
+        leaderboardUI.text = leaderboardT.text;
     }
 
     public void LapUI(int laps)

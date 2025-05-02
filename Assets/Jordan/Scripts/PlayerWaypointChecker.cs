@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PlayerWaypointChecker : MonoBehaviour, PosCounter
+public class PlayerWaypointChecker : MonoBehaviour, PosCounter, Lapcount
 {
     // Start is called before the first frame update
 
@@ -19,7 +19,9 @@ public class PlayerWaypointChecker : MonoBehaviour, PosCounter
     public string name { get; set; }
     public TMP_Text text { get; set; }
 
-    public float WaypointBorder; // a border used so the player doesnt have to reach the exact co-ords of the waypoint
+    public float WaypointBorder;
+
+    public int Laps { get; set; }// a border used so the player doesnt have to reach the exact co-ords of the waypoint
 
     void Start()
     {
@@ -27,6 +29,7 @@ public class PlayerWaypointChecker : MonoBehaviour, PosCounter
         name = Carname;
         counter = 0;
         DistancefromWaypoint = 0f;
+        Laps = 0;
         manager = FindObjectOfType<WayPointManager>();
         if (manager.Waypoints.Count() > 0) // will actvate the first node in the linkedlist
         {

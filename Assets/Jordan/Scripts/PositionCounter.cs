@@ -22,16 +22,24 @@ public class PositionCounter : MonoBehaviour
     {
         if (other.GetComponent<RacingAI>())
         {
-            
-            LeaderBoardManager.UpdateList();
+           RacingAI Ai = other.GetComponent<RacingAI>();
+            if (Ai.Laps < 3)
+            {
+                LeaderBoardManager.UpdateList();
+            }
+           
 
         }
 
         else if (other.GetComponent<PlayerWaypointChecker>())
         {
             PlayerWaypointChecker player = other.GetComponent<PlayerWaypointChecker>();
-            player.nextNode();
-            LeaderBoardManager.UpdateList();
+            if (player.Laps < 3)
+            {
+                player.nextNode();
+                LeaderBoardManager.UpdateList();
+            }
+            
             //Player = other.GetComponent<Playercontroller>();
         }
     }
