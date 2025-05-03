@@ -6,7 +6,7 @@ public class Playercontroller : MonoBehaviour
 {
 
      float acceleration = 25;
-    private float maxSpeed = 110;
+    private float maxSpeed = 100;
     public float baseTurnSpeed = 100;
     // Base turn speed when moving at full speed
 

@@ -8,8 +8,8 @@ public class Spectator : MonoBehaviour
     private SpectatorState currentState;
 
     private float stateTimer;
-    private float minTime = 2;
-    private float maxTime = 5;
+    private float minTime = 1;
+    private float maxTime = 4;
 
     
     // Start is called before the first frame update
@@ -17,7 +17,7 @@ public class Spectator : MonoBehaviour
     {
         animator= GetComponent<Animator>();
 
-        //animator.SetFloat("Offset", Random.Range(0,1));
+        
 
         SpectatorState randomState = GetRandomState();
 
