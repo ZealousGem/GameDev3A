@@ -72,6 +72,14 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void FinishRace()
+    {
+        ShowCanvas(gameFinishedMenu);
+        Time.timeScale = 0f;
+
+        gameFinishedText.text = " Race Completed! ";
+    }
+
     public void ResumeGame()
     {
         TogglePause();

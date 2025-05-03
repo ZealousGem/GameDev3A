@@ -58,7 +58,7 @@ public class LapCounter : MonoBehaviour
             PlayerWaypointChecker playerWaypointChecker = car.GetComponent<PlayerWaypointChecker>();
             if (playerWaypointChecker.Laps > 3)
             {
-                endGameMenu.ShowGameFinishedMenu(true);
+                endGameMenu.FinishRace();
                 inGameUI.SetActive(false);
                 SpeedUI.SetActive(false);
                 PosUIManager.ShowLeaderBoardEnd();
