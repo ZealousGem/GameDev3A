@@ -14,6 +14,8 @@ public class PosUIManager : MonoBehaviour
     public LeaderBoardManager LeaderBoardManager;
 
     public TMP_Text leaderboardUI;
+
+    public TMP_Text FinalLapUI;
     
     // Update is called once per frame
     void Update()
@@ -32,9 +34,9 @@ public class PosUIManager : MonoBehaviour
                 int pos = LeaderBoardManager.position[i].position;
                 text.text = pos.ToString();
             }
-          } 
-        
+          }
 
+        FinalLap(false);
         LapUI(0);
     }
 
@@ -87,6 +89,12 @@ public class PosUIManager : MonoBehaviour
     {
         Laps.text ="Laps: " +laps +"/3";
     }
+
+    public void FinalLap(bool lol)
+    {
+        FinalLapUI.text = lol ? "Final Lap" : "";
+    }
+
 }
 
 

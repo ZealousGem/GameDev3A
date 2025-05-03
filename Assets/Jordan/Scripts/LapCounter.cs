@@ -62,18 +62,30 @@ public class LapCounter : MonoBehaviour
                 inGameUI.SetActive(false);
                 SpeedUI.SetActive(false);
                 PosUIManager.ShowLeaderBoardEnd();
+               
             }
 
             else
             {
                 PosUIManager.LapUI(playerWaypointChecker.Laps);
                 playerWaypointChecker.Laps += 1;
+                if (playerWaypointChecker.Laps > 3)
+                {
+                    StartCoroutine(ShowFinalLap());
+                }
             }
             
             
             // will add their own lap count once merged
 
         }
+    }
+
+    public IEnumerator ShowFinalLap()
+    {
+        PosUIManager.FinalLap(true);
+        yield return new WaitForSeconds(2f);
+        PosUIManager.FinalLap(false);
     }
 
     // Update is called once per frame
