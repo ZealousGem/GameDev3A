@@ -20,10 +20,10 @@ public class PositionCounter : MonoBehaviour
     private void OnTriggerEnter(Collider other)  // if the waypoint has been collided by a car the leaderboard manager will be called to update the leaderboard
 
     {
-        if (other.GetComponent<RacingAI>())
+        if (other.GetComponent<RacingAI>()) // updates ai's current position in the leaderboard once ai has reached current waypoint
         {
            RacingAI Ai = other.GetComponent<RacingAI>();
-            if (Ai.Laps < 3)
+            if (Ai.Laps <= 3)
             {
                 LeaderBoardManager.UpdateList();
             }
@@ -33,14 +33,14 @@ public class PositionCounter : MonoBehaviour
 
         else if (other.GetComponent<PlayerWaypointChecker>())
         {
-            PlayerWaypointChecker player = other.GetComponent<PlayerWaypointChecker>();
+            PlayerWaypointChecker player = other.GetComponent<PlayerWaypointChecker>(); // increases the players position and changes the player's current waypoint node to the new waypoint node
             if (player.Laps < 3)
             {
                 player.nextNode();
-                LeaderBoardManager.UpdateList();
+                LeaderBoardManager.UpdateList(); // updates the player's position once they have reached the waypoint
             }
             
-            //Player = other.GetComponent<Playercontroller>();
+            
         }
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerWaypointChecker : MonoBehaviour, PosCounter, Lapcount
 {
-    // Start is called before the first frame update
-
+    
+    // variables for current WaypointNode
     WayPointNode curNode;
     Vector3 WayPoint;
     WayPointManager manager;
@@ -38,10 +38,10 @@ public class PlayerWaypointChecker : MonoBehaviour, PosCounter, Lapcount
         }
     }
 
-    // Update is called once per frame
+  
     void Update()
     {
-        DistFromCheckPoint();
+        DistFromCheckPoint(); // cals player's distance from curWaypoint
         nextNode();
        
     }

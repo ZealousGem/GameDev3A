@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 
@@ -27,7 +26,7 @@ public class CustomLinkedList
         }
     }
 
-    public int Count() // goss through the linkedlist in a ciruclar motion 
+    public int Count() // calculates the size of the circular linked list
     {
         int count = 0;
         WayPointNode cur = head;
@@ -44,7 +43,7 @@ public class CustomLinkedList
         return count; // returns the nodes position in the linked list 
     }
 
-    public WayPointNode NodeAcess(int elemnt) // acesses the node in the list 
+    public WayPointNode NodeAcess(int elemnt) // acesses the specific node in the list 
     {
         if (head == null) return null;
         WayPointNode node = head;

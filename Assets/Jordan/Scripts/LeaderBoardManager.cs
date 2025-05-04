@@ -39,7 +39,7 @@ public class LeaderBoardManager : MonoBehaviour
     public GameObject[] cars; // cars in the race
     PosUIManager ui; // ui that will display the leader board 
 
-    // Playercontroller controller;
+  
 
     void Start()
     {

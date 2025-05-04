@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using UnityEngine.AI;
 
 public class RacingAI : MonoBehaviour, PosCounter, Lapcount
 {
-    // Start is called before the first frame update
+    // variables for current WaypointNode
     NavMeshAgent agent;
     WayPointNode curNode;
-    int index = 0;
+
     Vector3 WayPoint;
     WayPointManager manager;
     public float Topspeed;
@@ -30,10 +29,10 @@ public class RacingAI : MonoBehaviour, PosCounter, Lapcount
     {
        
         
-       // text = GameObject.FindGameObjectWithTag(name).GetComponent<TMP_Text>();
-        Carname = gameObject.name;
+       
+        Carname = gameObject.name; // sets the cars name based on the name given through the factory adt
         name = Carname;
-        counter = 0;
+        counter = 0; // sets interface variables to 0 
         DistancefromWaypoint = 0f;
         Laps = 0;
         agent = GetComponent<NavMeshAgent>();
@@ -51,14 +50,14 @@ public class RacingAI : MonoBehaviour, PosCounter, Lapcount
     // Update is called once per frame
     void Update()
     {
-        agent.speed = Mathf.Lerp(agent.speed, curSpeed, Time.deltaTime * 2);
-        DistFromCheckPoint();// changes ai speed to desired current speed
+        agent.speed = Mathf.Lerp(agent.speed, curSpeed, Time.deltaTime * 2); // changes ai speed to desired current speed
+        DistFromCheckPoint(); // checks ai's distance from waypoint
         NextNode(); // will change the nodes to the next one
-    //  Debug.Log(index);
+   
 
     }
 
-    public void DistFromCheckPoint()
+    public void DistFromCheckPoint() // calculates ai distance from the current waypoint
     {
         DistancefromWaypoint = Vector3.Distance(transform.position, WayPoint);
     }
@@ -69,10 +68,7 @@ public class RacingAI : MonoBehaviour, PosCounter, Lapcount
        
             WayPoint = curNode.pos; // the next nodes location
             GameObject Waypoit = curNode.obj;
-        // transform.LookAt(WayPoint);
-      
-        //Debug.Log(curNode.obj);
-        agent.destination = WayPoint; // heads to the next location
+            agent.destination = WayPoint; // heads to the next location
 
 
         if (Waypoit.CompareTag("Checkpoint")) // will slow down if the waypoint has a checkpoint tag
@@ -100,7 +96,7 @@ public class RacingAI : MonoBehaviour, PosCounter, Lapcount
 
     public void NextNode()
     {
-       // Debug.Log("NextNode() called");
+       
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance) // won't change to next node until the agent has reached the currentnodes co-ords
         {
             if (curNode != null)
@@ -114,8 +110,8 @@ public class RacingAI : MonoBehaviour, PosCounter, Lapcount
                 {
                     curNode = manager.Waypoints.head;
                 }
-                MoveCar();
-               // Debug.Log(agent.speed);
+                MoveCar(); // utlises movecar method once curnode has been set
+               
             }
           
         }

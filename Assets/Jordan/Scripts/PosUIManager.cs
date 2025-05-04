@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Linq;
+
 
 public class PosUIManager : MonoBehaviour
 {
@@ -26,7 +26,7 @@ public class PosUIManager : MonoBehaviour
     private void Start() // displays the start postions of the cars from the leaderboard mamanger
     {
 
-        // StartCoroutine(UICar());
+       
          for (int i = 0; i < LeaderBoardManager.cars.Length; i++)
         {
             if (LeaderBoardManager.cars[i].GetComponent<PlayerWaypointChecker>())
@@ -36,8 +36,8 @@ public class PosUIManager : MonoBehaviour
             }
           }
 
-        FinalLap(false);
-        LapUI(0);
+        FinalLap(false); // hides final lap UI
+        LapUI(0); // sets lapcount to 0
     }
 
    
@@ -80,17 +80,17 @@ public class PosUIManager : MonoBehaviour
         
     }
 
-    public void ShowLeaderBoardEnd()
+    public void ShowLeaderBoardEnd() // displays leaderboard
     {
         leaderboardUI.text = leaderboardT.text;
     }
 
-    public void LapUI(int laps)
+    public void LapUI(int laps) // displays lap count
     {
         Laps.text ="Laps: " +laps +"/3";
     }
 
-    public void FinalLap(bool lol)
+    public void FinalLap(bool lol) // displays final lap UI
     {
         FinalLapUI.text = lol ? "Final Lap" : "";
     }

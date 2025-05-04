@@ -10,7 +10,7 @@ using UnityEngine.AI;
 
 public class WayPointManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     [HideInInspector]
     public CustomLinkedList Waypoints; // linkedlist that will contain the nodes of all the waypoints
     public GameObject[] waypointPrefab; // contains all the gameobject points in the track
@@ -22,7 +22,7 @@ public class WayPointManager : MonoBehaviour
     public void addWaypoint() 
     {
 
-        if (waypointPrefab == null || waypointPrefab.Length == 0)
+        if (waypointPrefab == null || waypointPrefab.Length == 0) // checks if waypoint objects are instantiated
         {
             Debug.Log("not set");
             return;
@@ -49,13 +49,5 @@ public class WayPointManager : MonoBehaviour
         Waypoints = new CustomLinkedList(); // makes a new linked list once it's awake
         addWaypoint();
     }
-
-    IEnumerator inDelay() // useless method, will delete later
-    {
-        yield return null;
-        
-    }
-
-  
 
 }
