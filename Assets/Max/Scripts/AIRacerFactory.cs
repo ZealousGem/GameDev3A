@@ -24,14 +24,13 @@ public class AIRacerFactory : RacerFactory
     //Chooses which racer to create
     public override AIRacer CreateRacer(int type)
     {
-        AIRacer racer;
-        switch (type)
+        AIRacer racer = type switch
         {
-            case 0: racer = new ARacer(); break;
-            case 1: racer = new BRacer(); break;
-            case 2: racer = new CRacer(); break;
-            default: throw new ArgumentException("Invalid racer type.");
-        }
+            0 => new ARacer(),
+            1 => new BRacer(),
+            2 => new CRacer(),
+            _ => throw new ArgumentException("Invalid racer type.")
+        };
 
         racer.ModelPrefab = prefabs[type];
 

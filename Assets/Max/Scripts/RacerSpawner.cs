@@ -37,7 +37,7 @@ public class RacerSpawner : MonoBehaviour
             RacingAI racingAI = instance.GetComponent<RacingAI>();
             if (racingAI != null)
             {
-                //Debug.Log("in racespawner, before change racingAi topspeed is" + racingAI.Topspeed + "and racer speed is" + racer.Speed);
+                
                 racingAI.Topspeed = racer.Speed;
                 racingAI.BrakeSpeed = racer.Brake;
                 racingAI.Carname = racer.RacerName;

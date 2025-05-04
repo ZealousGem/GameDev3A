@@ -17,8 +17,6 @@ public class Spectator : MonoBehaviour
     {
         animator= GetComponent<Animator>();
 
-        
-
         SpectatorState randomState = GetRandomState();
 
         ChangeState(randomState);
@@ -29,31 +27,21 @@ public class Spectator : MonoBehaviour
     void Update()
     {
 
-        if (currentState!=null)
-        {
-            //currentState.Update(this)
-        }
         stateTimer -= Time.deltaTime;
         if (stateTimer <= 0)
         {
             ChangeState(GetRandomState());
         }
 
-
-
     }
     private void ChangeState(SpectatorState newState)
     {
         currentState = newState;
-        //Debug.Log("Changed to state: " + newState.GetType().Name);
         currentState.Enter(this);
         stateTimer=Random.Range(minTime,maxTime);
-        //Debug.Log(stateTimer);
     }
     private SpectatorState GetRandomState()
     {
-
-       
 
         while(true)
         {
@@ -67,16 +55,30 @@ public class Spectator : MonoBehaviour
             _ => null
             };
 
+            // Get the type of the newly selected random state.
+            System.Type newStatType = newState.GetType();
+            System.Type currentStateType;
 
-            if (newState.GetType() != currentState?.GetType())
+
+           
+            if(currentState!=null)
+            {
+                // If currentState exists, get its type.
+                currentStateType = currentState.GetType();
+            }
+            else
+            {
+                currentStateType = null;
+            }
+            //we compare the two types
+            bool isSameType =(newStatType == currentStateType);
+
+            if (isSameType ==false)
             {
                 return newState;
             }
 
         } 
-
-       
-
 
     }
 }
