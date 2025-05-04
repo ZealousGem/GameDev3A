@@ -1768,7 +1768,7 @@ MonoBehaviour:
   name:
   - 2
   info: {fileID: 1960442747}
-  Nextscene: Jordan
+  Nextscene: Beginner Race
 --- !u!4 &1960442749
 Transform:
   m_ObjectHideFlags: 0
