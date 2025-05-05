@@ -9,6 +9,7 @@ TagManager:
   - GameFinished
   - Cars
   - UI
+  - Manager
   layers:
   - Default
   - TransparentFX

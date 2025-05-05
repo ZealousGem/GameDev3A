@@ -14,7 +14,7 @@ public class PositionCounter : MonoBehaviour
     private void Start()
     {
         
-        LeaderBoardManager = GameObject.FindWithTag("EditorOnly").GetComponent <LeaderBoardManager>();
+        LeaderBoardManager = GameObject.FindWithTag("Manager").GetComponent<LeaderBoardManager>();
 
     }
     private void OnTriggerEnter(Collider other)  // if the waypoint has been collided by a car the leaderboard manager will be called to update the leaderboard

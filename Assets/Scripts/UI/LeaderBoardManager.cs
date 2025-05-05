@@ -71,7 +71,7 @@ public class LeaderBoardManager : MonoBehaviour
 
         }
 
-        ui = GameObject.FindWithTag("EditorOnly").GetComponent<PosUIManager>();
+        ui = GameObject.FindWithTag("Manager").GetComponent<PosUIManager>();
         
         ui.LeaaderBoardUpdate(position); // updates leaderboard ui
     }

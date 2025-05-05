@@ -21,7 +21,7 @@ public class LapCounter : MonoBehaviour
     void Start()
     {
         LapCount = 0;
-        PosUIManager = GameObject.FindGameObjectWithTag("EditorOnly").GetComponent<PosUIManager>();
+        PosUIManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<PosUIManager>();
     }
 
     private void OnTriggerEnter(Collider other) // changes lap count once player or ai has collided with last waypoint 
