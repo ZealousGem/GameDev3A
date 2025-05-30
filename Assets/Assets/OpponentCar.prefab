@@ -71,6 +71,7 @@ MonoBehaviour:
   Topspeed: 0
   BrakeSpeed: 0
   curSpeed: 0
+  Carname: 
 --- !u!1001 &6615484870119428494
 PrefabInstance:
   m_ObjectHideFlags: 0
