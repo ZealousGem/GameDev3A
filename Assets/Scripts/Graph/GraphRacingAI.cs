@@ -13,7 +13,7 @@ public class GraphRacingAI : MonoBehaviour
     public float Topspeed;
     public float BrakeSpeed;
     public float curSpeed;
-    List<Node> path;
+    public List<Node> path;
     int curIndex = 0;
 
     public string Carname;
@@ -23,17 +23,28 @@ public class GraphRacingAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         manager = FindObjectOfType<NodeManager>();
         MakePath();
+      //  MakePath();
         
     }
 
     void MakePath()
     {
+
         GameObject startLine = closetNodePoint();
         GameObject FinishLine = nextWayPoint(startLine);
+
+        Debug.Log("Closest Start Node: " + startLine?.name);
+        Debug.Log("Next Waypoint Node: " + FinishLine?.name);
+
+        Debug.Log($"Start: {startLine?.name}, End: {FinishLine?.name}");
         if (manager.graph.AStar(startLine, FinishLine))
         {
             path = manager.graph.getPath();
             agent.SetDestination(path[0].findWaypoint().transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("Pathfinding failed.");
         }
     }
 

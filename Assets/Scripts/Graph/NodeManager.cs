@@ -33,6 +33,7 @@ public class NodeManager : MonoBehaviour
             {
                 GameObject obj = waypoints[i];
                 graph.AddNode(obj);
+              //  Debug.Log("Node Added: " + obj.name);
             }
 
             for (int i = 0; i < links.Length; i++)
@@ -41,14 +42,26 @@ public class NodeManager : MonoBehaviour
                 if (links[i].direction == Links.dir.BI)
                 {
                     graph.AddEdges(links[i].secondnode, links[i].firstnode);
+                   
                 }
             }
         }
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        foreach (GameObject wp in waypoints)
+        {
+            Gizmos.DrawSphere(wp.transform.position, 1f);
+        }
+    }
+
     private void Awake()
     {
-        CreatePath();
+       
         graph = new CustomGraph();
+        CreatePath();
+      
     }
 }

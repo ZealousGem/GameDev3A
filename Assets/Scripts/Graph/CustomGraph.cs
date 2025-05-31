@@ -77,68 +77,76 @@ public class CustomGraph
 
         if (TempStart == null || TempEnd == null)
         {
+            Debug.LogWarning("Start or End node is null.");
             return false;
+        }
+
+        // Reset all nodes
+        foreach (Node n in points)
+        {
+            n.g = float.MaxValue;
+            n.h = 0;
+            n.f = 0;
+            n.prevNode = null;
         }
 
         List<Node> open = new List<Node>();
         List<Node> close = new List<Node>();
-        float tent_g = 0;
-        bool tentImproved;
 
         TempStart.g = 0;
         TempStart.h = distance(TempStart, TempEnd);
         TempStart.f = TempStart.h;
 
         open.Add(TempStart);
+
         while (open.Count > 0)
         {
             int i = SmallestF(open);
             Node curNode = open[i];
+
+            // Debug current node
+            Debug.Log("Evaluating node: " + curNode.findWaypoint().name + ", F = " + curNode.f);
+
             if (curNode.findWaypoint() == end)
             {
-                // creates path from start to end
+                // Create path
                 MakePath(TempStart, TempEnd);
+                Debug.Log("Path found!");
                 return true;
             }
 
             open.RemoveAt(i);
             close.Add(curNode);
-            Node neighbour;
+
             foreach (Edge e in curNode.edgeList)
             {
-                neighbour = e.endNode;
+                Node neighbour = e.endNode;
 
-                if (close.IndexOf(neighbour) > -1)
+                if (close.Contains(neighbour))
                     continue;
 
-                tent_g = curNode.g + distance(curNode, neighbour);
-                if (open.IndexOf(neighbour) == -1)
+                float tentativeG = curNode.g + distance(curNode, neighbour);
+
+                if (!open.Contains(neighbour))
                 {
                     open.Add(neighbour);
-                    tentImproved = true;
                 }
 
-                else if (tent_g < neighbour.g)
-                {
-                    tentImproved = true;
-                }
-
-                else
-                {
-                    tentImproved = false;
-                }
-
-
-                if (tentImproved)
+                // Only update if this path is better
+                if (tentativeG < neighbour.g)
                 {
                     neighbour.prevNode = curNode;
-                    neighbour.g = tent_g;
-                    neighbour.h = distance(curNode, TempEnd);
+                    neighbour.g = tentativeG;
+                    neighbour.h = distance(neighbour, TempEnd);
                     neighbour.f = neighbour.g + neighbour.h;
-                }
 
+                    // Debug neighbor update
+                    Debug.Log("Updating neighbor: " + neighbour.findWaypoint().name + ", New F = " + neighbour.f);
+                }
             }
         }
+
+        Debug.LogWarning("AStar failed to find a path from " + TempStart.findWaypoint().name + " to " + TempEnd.findWaypoint().name);
         return false;
     }
 
