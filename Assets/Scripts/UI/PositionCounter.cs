@@ -25,9 +25,23 @@ public class PositionCounter : MonoBehaviour
            RacingAI Ai = other.GetComponent<RacingAI>();
             if (Ai.Laps <= 3)
             {
+                
                 LeaderBoardManager.UpdateList();
             }
            
+
+        }
+
+        else if (other.GetComponent<GraphRacingAI>()) // updates ai's current position in the leaderboard once ai has reached current waypoint
+        {
+            GraphRacingAI Ai = other.GetComponent<GraphRacingAI>();
+            if (Ai.Laps <= 3)
+            {
+                Ai.NextNode();
+                LeaderBoardManager.UpdateList();
+                Debug.Log("gone through");
+            }
+
 
         }
 

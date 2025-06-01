@@ -53,6 +53,17 @@ public class LapCounter : MonoBehaviour
            
         }
 
+       else if (car.GetComponent<GraphRacingAI>())
+        {
+            // will add their own lap count once merged
+            GraphRacingAI carLap = car.GetComponent<GraphRacingAI>();
+            if (carLap.Laps < 3) // won't increment if the lapcount is more than 3 laps 
+            {
+                carLap.Laps += 1;
+            }
+
+        }
+
         else if (car.GetComponent<PlayerWaypointChecker>())
         {
             PlayerWaypointChecker playerWaypointChecker = car.GetComponent<PlayerWaypointChecker>();

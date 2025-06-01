@@ -3,28 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class GraphRacingAI : MonoBehaviour
+
+public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
 {
 
     NavMeshAgent agent;
 
     NodeManager manager;
-
+    WayPointManager wayPointManager;
+    WayPointNode curNode;
     public float Topspeed;
     public float BrakeSpeed;
     public float curSpeed;
     public List<Node> path;
     int curIndex = 0;
+    Vector3 WayPoint;
 
     public string Carname;
+
+
+    [HideInInspector]
+    public int counter { get; set; }
+    public float DistancefromWaypoint { get; set; }
+    public int Laps { get; set; }
+
     // Start is called before the first frame update
     void Start()
     {
+        Carname = gameObject.name; // sets the cars name based on the name given through the factory adt
+        name = Carname;
+        counter = 0; // sets interface variables to 0 
+        DistancefromWaypoint = 0f;
+        Laps = 0;
         agent = GetComponent<NavMeshAgent>();
         manager = FindObjectOfType<NodeManager>();
         MakePath();
-      //  MakePath();
-        
+
+        wayPointManager = FindObjectOfType<WayPointManager>();
+        if (wayPointManager.Waypoints.Count() > 0) // will actvate the first node in the linkedlist
+        {
+            curNode = wayPointManager.Waypoints.NodeAcess(0); // sets waypointnode to the head node in the linkedlist 
+             // actviates movement for ai to head to waypointnodes position 
+        }
+        //  MakePath();
+
     }
 
     void MakePath()
@@ -46,6 +68,11 @@ public class GraphRacingAI : MonoBehaviour
         {
             Debug.LogWarning("Pathfinding failed.");
         }
+    }
+
+    public void DistFromCheckPoint() // calculates ai distance from the current waypoint
+    {
+        DistancefromWaypoint = Vector3.Distance(transform.position, WayPoint);
     }
 
     void moveCar()
@@ -123,10 +150,42 @@ public class GraphRacingAI : MonoBehaviour
         return farwaway;
     }
 
+    public void NextNode()
+    {
+
+        
+            if (curNode != null)
+            {
+                counter++; // updates  the counter to determine what position the car is in
+                curNode = curNode.nextNode;
+
+                // moves to nextNode
+
+                if (curNode == wayPointManager.Waypoints.head) // checks if the linkedlist loop has reset 
+                {
+                    curNode = wayPointManager.Waypoints.head;
+                }
+                if (curNode == null) return;
+
+                WayPoint = curNode.pos; // the next nodes location
+               
+                // MoveCar(); // utlises movecar method once curnode has been set
+
+            }
+
+        
+
+
+
+    }
+
     // Update is called once per frame
     void Update()
     {
         moveCar();
         agent.speed = Mathf.Lerp(agent.speed, curSpeed, Time.deltaTime * 2);
+        DistFromCheckPoint();
+       
+       
     }
 }

@@ -60,6 +60,14 @@ public class LeaderBoardManager : MonoBehaviour
                // Debug.Log(pos.name + ":   "+ pos.position);
             }
 
+            else if (cars[i].GetComponent<GraphRacingAI>()) // finds the car objects and adds them to the leaderboard list 
+            {
+                GraphRacingAI ai = cars[i].GetComponent<GraphRacingAI>();
+                LeaderBoard pos = new LeaderBoard(ai.Carname, i + 1, ai.DistancefromWaypoint);
+                position.Add(pos);
+                // Debug.Log(pos.name + ":   "+ pos.position);
+            }
+
             else if (cars[i].GetComponent<PlayerWaypointChecker>()) // finds the car objects and adds them to the leaderboard list 
             {
                 PlayerWaypointChecker ai = cars[i].GetComponent<PlayerWaypointChecker>();
@@ -103,6 +111,13 @@ public class LeaderBoardManager : MonoBehaviour
                 Carname = carAi.name;
                 count = carAi.counter;
                 dist = carAi.DistancefromWaypoint;
+            }
+
+            else if (car.TryGetComponent<GraphRacingAI>(out var GrcarAi)) // if it is the ai it will try and find the variables from that class to add to the leaderboard
+            {
+                Carname = GrcarAi.name;
+                count = GrcarAi.counter;
+                dist = GrcarAi.DistancefromWaypoint;
             }
 
             else if (car.TryGetComponent<PlayerWaypointChecker>(out var Player))
