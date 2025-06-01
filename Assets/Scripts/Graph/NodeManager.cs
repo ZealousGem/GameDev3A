@@ -39,11 +39,11 @@ public class NodeManager : MonoBehaviour
             for (int i = 0; i < links.Length; i++)
             {
                 graph.AddEdges(links[i].firstnode, links[i].secondnode);
-                if (links[i].direction == Links.dir.BI)
+              /*  if (links[i].direction == Links.dir.BI)
                 {
                     graph.AddEdges(links[i].secondnode, links[i].firstnode);
                    
-                }
+                } */
             }
         }
     }

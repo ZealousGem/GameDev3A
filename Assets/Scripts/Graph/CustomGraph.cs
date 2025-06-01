@@ -77,7 +77,7 @@ public class CustomGraph
 
         if (TempStart == null || TempEnd == null)
         {
-            Debug.LogWarning("Start or End node is null.");
+          //  Debug.LogWarning("Start or End node is null.");
             return false;
         }
 
@@ -105,7 +105,7 @@ public class CustomGraph
             Node curNode = open[i];
 
             // Debug current node
-            Debug.Log("Evaluating node: " + curNode.findWaypoint().name + ", F = " + curNode.f);
+          //  Debug.Log("Evaluating node: " + curNode.findWaypoint().name + ", F = " + curNode.f);
 
             if (curNode.findWaypoint() == end)
             {
@@ -125,7 +125,18 @@ public class CustomGraph
                 if (close.Contains(neighbour))
                     continue;
 
-                float tentativeG = curNode.g + distance(curNode, neighbour);
+                Vector3 toNeighbor = neighbour.findWaypoint().transform.position - curNode.findWaypoint().transform.position;
+                Vector3 toGoal = TempEnd.findWaypoint().transform.position - curNode.findWaypoint().transform.position;
+
+                float penalty = 1f;
+                float dot = (Vector3.Dot(toNeighbor.normalized, toGoal.normalized));
+                if (dot < 0.2f)
+                {
+                  penalty = 100f;
+                    
+                }
+
+                float tentativeG = curNode.g + distance(curNode, neighbour) * penalty;
 
                 if (!open.Contains(neighbour))
                 {
@@ -141,7 +152,7 @@ public class CustomGraph
                     neighbour.f = neighbour.g + neighbour.h;
 
                     // Debug neighbor update
-                    Debug.Log("Updating neighbor: " + neighbour.findWaypoint().name + ", New F = " + neighbour.f);
+                  //  Debug.Log("Updating neighbor: " + neighbour.findWaypoint().name + ", New F = " + neighbour.f);
                 }
             }
         }

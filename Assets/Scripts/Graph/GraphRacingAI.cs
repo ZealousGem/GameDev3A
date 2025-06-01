@@ -18,7 +18,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
     public List<Node> path;
     int curIndex = 0;
     Vector3 WayPoint;
-
+    CustomGraph custom;
     public string Carname;
 
 
@@ -37,7 +37,8 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
         Laps = 0;
         agent = GetComponent<NavMeshAgent>();
         manager = FindObjectOfType<NodeManager>();
-        MakePath();
+        custom = manager.graph;
+       // MakePath();
 
         wayPointManager = FindObjectOfType<WayPointManager>();
         if (wayPointManager.Waypoints.Count() > 0) // will actvate the first node in the linkedlist
@@ -45,7 +46,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
             curNode = wayPointManager.Waypoints.NodeAcess(0); // sets waypointnode to the head node in the linkedlist 
              // actviates movement for ai to head to waypointnodes position 
         }
-        //  MakePath();
+          MakePath();
 
     }
 
@@ -59,9 +60,9 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
         Debug.Log("Next Waypoint Node: " + FinishLine?.name);
 
         Debug.Log($"Start: {startLine?.name}, End: {FinishLine?.name}");
-        if (manager.graph.AStar(startLine, FinishLine))
+        if (custom.AStar(startLine, FinishLine))
         {
-            path = manager.graph.getPath();
+            path = custom.getPath();
             agent.SetDestination(path[0].findWaypoint().transform.position);
         }
         else
@@ -77,6 +78,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
 
     void moveCar()
     {
+        GameObject curNode;
         if (path == null || path.Count == 0)
         {
             return;
@@ -84,26 +86,55 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
 
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
-            curIndex++;
+             curIndex++;
             if (curIndex >= path.Count)
             {
-                MakePath();
-                curIndex = 0;
-            }
+                GameObject startLine = path[path.Count - 1].findWaypoint();
+                GameObject FinishLine = nextWayPoint(startLine);
+                if (custom.AStar(startLine, FinishLine))
+                {
+                    path= custom.getPath();
+                    curIndex = 0;
+                    if (path != null && path.Count > 0)
+                    {
+                      
+                        agent.SetDestination(path[0].findWaypoint().transform.position);
+                        curNode = path[curIndex].findWaypoint();
+                        if (curNode.CompareTag("Checkpoint"))
+                        {
+                            curSpeed = BrakeSpeed;
+                        }
 
-            agent.SetDestination(path[curIndex].findWaypoint().transform.position);
+                        else
+                        {
+                            curSpeed = Topspeed;
+                        }
+                    }
+                }
+              
+            } 
 
-            GameObject curNode = path[curIndex].findWaypoint();
-
-            if (curNode.CompareTag("Checkpoint"))
+           else
             {
-                curSpeed = BrakeSpeed;
+                agent.SetDestination(path[curIndex].findWaypoint().transform.position);
+                curNode = path[curIndex].findWaypoint();
+                if (curNode.CompareTag("Checkpoint"))
+                {
+                    curSpeed = BrakeSpeed;
+                }
+
+                else
+                {
+                    curSpeed = Topspeed;
+                }
+
             }
 
-            else
-            {
-                curSpeed = Topspeed;
-            }
+            
+
+            
+
+           
             
         }
     }
