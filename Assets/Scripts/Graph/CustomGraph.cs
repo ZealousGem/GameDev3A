@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
+[System.Serializable]
 public class CustomGraph
 {
     // Start is called before the first frame update
@@ -70,7 +70,7 @@ public class CustomGraph
     }
 
 
-    public bool AStar(GameObject start, GameObject end)
+    public bool AStar(GameObject start, GameObject end, GameObject name)
     {
         Node TempStart = FindNode(start);
         Node TempEnd = FindNode(end);
@@ -111,7 +111,7 @@ public class CustomGraph
             {
                 // Create path
                 MakePath(TempStart, TempEnd);
-                Debug.Log("Path found!");
+               // Debug.Log("Path found!");
                 return true;
             }
 
@@ -132,7 +132,7 @@ public class CustomGraph
                 float dot = (Vector3.Dot(toNeighbor.normalized, toGoal.normalized));
                 if (dot < 0.2f)
                 {
-                  penalty = 100f;
+                  penalty = 3f;
                     
                 }
 
@@ -152,7 +152,7 @@ public class CustomGraph
                     neighbour.f = neighbour.g + neighbour.h;
 
                     // Debug neighbor update
-                  //  Debug.Log("Updating neighbor: " + neighbour.findWaypoint().name + ", New F = " + neighbour.f);
+                   Debug.Log( name.name +" // Updating neighbor: " + neighbour.findWaypoint().name + "// New F = " + neighbour.f);
                 }
             }
         }
@@ -177,5 +177,40 @@ public class CustomGraph
             p = p.prevNode;
         }
         pathing.Insert(0, start);
+    }
+
+    public CustomGraph Copy()
+    {
+        CustomGraph copy = new CustomGraph();
+
+        Dictionary<Node, Node> Map = new Dictionary<Node, Node>();
+
+        foreach (Node node in points) // copys node from graph
+        {
+            Node newN = new Node(node);
+            Map[node] = newN;
+            copy.points.Add(newN);
+
+        }
+
+        foreach (Edge e in sides)
+        {
+            Node start = Map[e.startNode];
+            Node end = Map[e.endNode];
+
+            Edge newEdge = new Edge(start, end);
+            copy.sides.Add(newEdge);
+            start.edgeList.Add(newEdge);
+        }
+
+        foreach (Node n in pathing)
+        {
+            if (Map.TryGetValue(n, out Node mappedNode))
+            {
+                copy.points.Add(mappedNode);
+            }
+        }
+
+        return copy;
     }
 }

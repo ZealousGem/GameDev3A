@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Node
 {
     // Start is called before the first frame update
@@ -17,6 +18,16 @@ public class Node
     {
         waypoint = p;
         path = null;
+    }
+
+    public Node(Node other)
+    {
+        this.waypoint = other.waypoint; // share same GameObject
+        this.f = other.f;
+        this.g = other.g;
+        this.h = other.h;
+        this.prevNode = null; // This will be re-linked
+        this.edgeList = new List<Edge>();
     }
 
     public GameObject findWaypoint()

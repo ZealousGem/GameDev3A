@@ -37,7 +37,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
         Laps = 0;
         agent = GetComponent<NavMeshAgent>();
         manager = FindObjectOfType<NodeManager>();
-        custom = manager.graph;
+        custom = manager.graph.Copy();
        // MakePath();
 
         wayPointManager = FindObjectOfType<WayPointManager>();
@@ -56,11 +56,11 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
         GameObject startLine = closetNodePoint();
         GameObject FinishLine = nextWayPoint(startLine);
 
-        Debug.Log("Closest Start Node: " + startLine?.name);
-        Debug.Log("Next Waypoint Node: " + FinishLine?.name);
+      //  Debug.Log("Closest Start Node: " + startLine?.name);
+      //  Debug.Log("Next Waypoint Node: " + FinishLine?.name);
 
-        Debug.Log($"Start: {startLine?.name}, End: {FinishLine?.name}");
-        if (custom.AStar(startLine, FinishLine))
+       // Debug.Log($"Start: {startLine?.name}, End: {FinishLine?.name}");
+        if (custom.AStar(startLine, FinishLine, this.gameObject))
         {
             path = custom.getPath();
             agent.SetDestination(path[0].findWaypoint().transform.position);
@@ -91,13 +91,14 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
             {
                 GameObject startLine = path[path.Count - 1].findWaypoint();
                 GameObject FinishLine = nextWayPoint(startLine);
-                if (custom.AStar(startLine, FinishLine))
+               // Debug.Log(gameObject.name + " // " + startLine + " // " + FinishLine);
+                if (custom.AStar(startLine, FinishLine, this.gameObject))
                 {
                     path= custom.getPath();
                     curIndex = 0;
                     if (path != null && path.Count > 0)
                     {
-                      
+                       // Debug.Log(gameObject.name +" Start Point" + path[0].findWaypoint());
                         agent.SetDestination(path[0].findWaypoint().transform.position);
                         curNode = path[curIndex].findWaypoint();
                         if (curNode.CompareTag("Checkpoint"))
@@ -116,6 +117,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
 
            else
             {
+               // Debug.Log(gameObject.name +" End Point" + path[curIndex].findWaypoint());
                 agent.SetDestination(path[curIndex].findWaypoint().transform.position);
                 curNode = path[curIndex].findWaypoint();
                 if (curNode.CompareTag("Checkpoint"))
@@ -142,9 +144,13 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
     GameObject nextWayPoint(GameObject cur)
     {
         int element = System.Array.IndexOf(manager.waypoints, cur);
-        if (element < 0) return manager.waypoints[0];
+        if (element < 0) { //Debug.Log(gameObject.name+ " " + manager.waypoints[0]); 
+            return manager.waypoints[0];  }
+                
         int nextElement = (element +1) % manager.waypoints.Length;
+       // Debug.Log(gameObject.name+ " " +manager.waypoints[nextElement]);
         return manager.waypoints[nextElement];
+
     }
 
     GameObject closetNodePoint()
@@ -160,7 +166,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
                 closest = manager.waypoints[i];
             }
         }
-
+        Debug.Log(gameObject.name + " "+closest);
         return closest;
     }
 
