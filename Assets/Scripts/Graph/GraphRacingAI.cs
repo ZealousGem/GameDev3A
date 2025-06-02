@@ -195,7 +195,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
             {
                 counter++; // updates  the counter to determine what position the car is in
                 curNode = curNode.nextNode;
-
+            Debug.Log( gameObject.name+ " " +counter);
                 // moves to nextNode
 
                 if (curNode == wayPointManager.Waypoints.head) // checks if the linkedlist loop has reset 

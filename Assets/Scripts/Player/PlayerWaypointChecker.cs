@@ -66,6 +66,7 @@ public class PlayerWaypointChecker : MonoBehaviour, PosCounter, Lapcount
             if (curNode != null)
             {
                 counter++; // updates  the counter to determine what position the car is in
+                Debug.Log("Player: "+counter);
                 curNode = curNode.nextNode;
 
                 // moves to nextNode

@@ -152,7 +152,7 @@ public class CustomGraph
                     neighbour.f = neighbour.g + neighbour.h;
 
                     // Debug neighbor update
-                   Debug.Log( name.name +" // Updating neighbor: " + neighbour.findWaypoint().name + "// New F = " + neighbour.f);
+                  // Debug.Log( name.name +" // Updating neighbor: " + neighbour.findWaypoint().name + "// New F = " + neighbour.f);
                 }
             }
         }
