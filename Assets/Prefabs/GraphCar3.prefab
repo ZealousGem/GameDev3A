@@ -359,6 +359,7 @@ MonoBehaviour:
   BrakeSpeed: 0
   curSpeed: 0
   Carname: 
+  WaypointBorder: 30
 --- !u!1001 &5325103785582743881
 PrefabInstance:
   m_ObjectHideFlags: 0

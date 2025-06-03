@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,6 +21,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
     Vector3 WayPoint;
     CustomGraph custom;
     public string Carname;
+    public float WaypointBorder;
 
 
     [HideInInspector]
@@ -47,6 +49,8 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
              // actviates movement for ai to head to waypointnodes position 
         }
           MakePath();
+        SetWaypoint();
+        
 
     }
 
@@ -190,12 +194,13 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
     public void NextNode()
     {
 
-        
+        if (DistancefromWaypoint < WaypointBorder)
+        {
             if (curNode != null)
             {
                 counter++; // updates  the counter to determine what position the car is in
                 curNode = curNode.nextNode;
-            Debug.Log( gameObject.name+ " " +counter);
+                Debug.Log(gameObject.name + " " + counter);
                 // moves to nextNode
 
                 if (curNode == wayPointManager.Waypoints.head) // checks if the linkedlist loop has reset 
@@ -204,16 +209,24 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
                 }
                 if (curNode == null) return;
 
-                WayPoint = curNode.pos; // the next nodes location
-               
+                SetWaypoint(); // the next nodes location
+
                 // MoveCar(); // utlises movecar method once curnode has been set
 
             }
+        }
+           
 
         
 
 
 
+    }
+
+    void SetWaypoint()
+    {
+        if (curNode == null) return;
+        WayPoint = curNode.pos;
     }
 
     // Update is called once per frame
@@ -222,6 +235,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
         moveCar();
         agent.speed = Mathf.Lerp(agent.speed, curSpeed, Time.deltaTime * 2);
         DistFromCheckPoint();
+        NextNode();
        
        
     }

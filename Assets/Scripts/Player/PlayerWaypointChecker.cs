@@ -36,6 +36,7 @@ public class PlayerWaypointChecker : MonoBehaviour, PosCounter, Lapcount
             curNode = manager.Waypoints.NodeAcess(0); // sets waypointnode to the head node in the linkedlist 
              // actviates movement for ai to head to waypointnodes position 
         }
+        SetWaypoint();
     }
 
   

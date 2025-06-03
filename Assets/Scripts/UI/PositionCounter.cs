@@ -39,7 +39,7 @@ public class PositionCounter : MonoBehaviour
             {
                 Ai.NextNode();
                 LeaderBoardManager.UpdateList();
-                Debug.Log("gone through");
+              //  Debug.Log("gone through");
             }
 
 

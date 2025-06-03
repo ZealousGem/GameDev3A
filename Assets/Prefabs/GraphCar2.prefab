@@ -123,6 +123,7 @@ MonoBehaviour:
   BrakeSpeed: 0
   curSpeed: 0
   Carname: 0
+  WaypointBorder: 30
 --- !u!1 &845906763197395820
 GameObject:
   m_ObjectHideFlags: 0
