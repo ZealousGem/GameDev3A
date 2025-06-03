@@ -355,10 +355,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ac8a8e9ef117e45bb19fe5209da3e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Topspeed: 40
-  BrakeSpeed: 20
+  Topspeed: 0
+  BrakeSpeed: 0
   curSpeed: 0
-  Carname: bobby
+  Carname: 
 --- !u!1001 &9010437633567464150
 PrefabInstance:
   m_ObjectHideFlags: 0

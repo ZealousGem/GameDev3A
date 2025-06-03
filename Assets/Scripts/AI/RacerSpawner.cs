@@ -33,16 +33,33 @@ public class RacerSpawner : MonoBehaviour
             
             instance.name = racer.RacerName;
 
-            // Get the RacingAI component from the spawned object
-            RacingAI racingAI = instance.GetComponent<RacingAI>();
-            if (racingAI != null)
+            if (instance.GetComponent<RacingAI>())
             {
-                
-                racingAI.Topspeed = racer.Speed;
-                racingAI.BrakeSpeed = racer.Brake;
-                racingAI.Carname = racer.RacerName;
+                RacingAI racingAI = instance.GetComponent<RacingAI>();
+                if (racingAI != null)
+                {
 
+                    racingAI.Topspeed = racer.Speed;
+                    racingAI.BrakeSpeed = racer.Brake;
+                    racingAI.Carname = racer.RacerName;
+
+                }
             }
+
+            else if (instance.GetComponent<GraphRacingAI>())
+            {
+                GraphRacingAI racingAI = instance.GetComponent<GraphRacingAI>();
+                if (racingAI != null)
+                {
+
+                    racingAI.Topspeed = racer.Speed;
+                    racingAI.BrakeSpeed = racer.Brake;
+                    racingAI.Carname = racer.RacerName;
+
+                }
+            }
+            // Get the RacingAI component from the spawned object
+           
 
         }
 
