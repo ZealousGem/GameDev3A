@@ -18,6 +18,8 @@ public class Checkpoint : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             manager.CheckpointReached(transform);
+            try { SoundManager.instance.PlaySound("check"); } catch { }
+            
         }
     }
 }

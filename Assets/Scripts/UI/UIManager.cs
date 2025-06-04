@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
         isPaused = !isPaused;
         if (isPaused )
         {
+            try { SoundManager.instance.StopCarSound("engine"); } catch { }
             ShowCanvas(pauseMenu);
             Time.timeScale = 0;
         }
@@ -66,7 +67,7 @@ public class UIManager : MonoBehaviour
         
         ShowCanvas(gameFinishedMenu);
         Time.timeScale = 0f;
-
+        try { SoundManager.instance.StopCarSound("engine"); } catch { }
         gameFinishedText.text = won ? " Race Completed! You Win! " : " Time's Up! You Lose! ";
         //might want to simplify
 
@@ -76,7 +77,7 @@ public class UIManager : MonoBehaviour
     {
         ShowCanvas(gameFinishedMenu);
         Time.timeScale = 0f;
-
+        try { SoundManager.instance.StopCarSound("engine"); } catch { }
         gameFinishedText.text = " Race Completed! ";
     }
 

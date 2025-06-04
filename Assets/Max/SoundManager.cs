@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource audioSource;
     private AudioSource musicSource;
+    private AudioSource carSource;
     private HashMap<string, AudioClip> soundMap;
 
 
@@ -37,7 +38,9 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         audioSource=gameObject.AddComponent<AudioSource>();
-        musicSource=gameObject.GetComponent<AudioSource>();
+        musicSource=gameObject.AddComponent<AudioSource>();
+        carSource=gameObject.AddComponent<AudioSource>();
+        musicSource.volume = 0.5f;
         soundMap = new HashMap<string,AudioClip>();
 
         foreach (var sound in sounds)
@@ -52,6 +55,38 @@ public class SoundManager : MonoBehaviour
         {
             AudioClip clip = soundMap.Get(key);
             audioSource.PlayOneShot(clip);
+        }
+        catch (KeyNotFoundException)
+        {
+
+        }
+    }
+
+    public void PlayCarSound(string key)
+    {
+        try
+        {
+            AudioClip clip = soundMap.Get(key);
+            carSource.clip = clip;
+            carSource.loop = true;
+            carSource.Play();
+        }
+        catch { 
+        
+        }   
+    }
+
+    public void StopCarSound(string key)
+    {
+        try
+        {
+            if (soundMap.ContainsKey(key))
+            {
+                carSource.loop = false;
+                carSource.Stop();
+            }
+           
+          
         }
         catch (KeyNotFoundException)
         {

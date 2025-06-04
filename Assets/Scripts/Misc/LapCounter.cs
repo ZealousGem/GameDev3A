@@ -74,12 +74,16 @@ public class LapCounter : MonoBehaviour
                 SpeedUI.SetActive(false);
                 PosUIManager.ShowLeaderBoardEnd();
                
+
             }
 
             else
             {
                 PosUIManager.LapUI(playerWaypointChecker.Laps); // if lap count is less than 3 laps, the players laps variable will increment 
                 playerWaypointChecker.Laps += 1;
+
+                if (playerWaypointChecker.Laps > 1 && playerWaypointChecker.Laps <= 3) { try { SoundManager.instance.PlaySound("check"); } catch { } }
+               
                 if (playerWaypointChecker.Laps > 3) // if the player is on the final lap a couritine will that will display the final lap UI
                 {
                     StartCoroutine(ShowFinalLap());

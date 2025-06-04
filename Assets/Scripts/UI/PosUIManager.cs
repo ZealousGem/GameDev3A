@@ -88,11 +88,22 @@ public class PosUIManager : MonoBehaviour
     public void LapUI(int laps) // displays lap count
     {
         Laps.text ="Laps: " +laps +"/3";
+      
     }
 
     public void FinalLap(bool lol) // displays final lap UI
     {
-        FinalLapUI.text = lol ? "Final Lap" : "";
+        //   FinalLapUI.text = lol ? SoundManager.instance.PlaySound() "Final Lap" : "";
+        if (lol)
+        {
+            try { SoundManager.instance.PlaySound("final"); } catch { } 
+            FinalLapUI.text = "Final Lap";
+        }
+
+        else
+        {
+            FinalLapUI.text = "";
+        }
     }
 
 }

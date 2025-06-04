@@ -46,7 +46,9 @@ public class DialogueManager : MonoBehaviour
         try
         {
             SoundManager.instance.StopSong();
+            SoundManager.instance.PlaySound("ui");
             SoundManager.instance.PlaySong(key);
+            
         }
 
         catch

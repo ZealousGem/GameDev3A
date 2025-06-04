@@ -144,8 +144,18 @@ public class DialogueSystem : MonoBehaviour
         Button.SetActive(false);
         StartCoroutine(TypeDialogue(sentence)); // displays the dialogue text in a courtieine to have text pop up in a timed sequence 
         login.Add(sentence);
-        counter += 1; // keeps track fo the front position element in the queue
+        if (CharName == "Rival Ryan")
+        {
+            SoundManager.instance.PlaySound("ryan");
+            
+        }
 
+        else if (CharName == "Coach Walker")
+        {
+            SoundManager.instance.PlaySound("coach");
+        }
+        counter += 1; // keeps track fo the front position element in the queue
+       
     }
 
     public IEnumerator TypeDialogue(string sentence)

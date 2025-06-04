@@ -20,6 +20,7 @@ public class Playercontroller : MonoBehaviour
 
     private float currentSpeed = 0;
     private Vector3 inputDirection;
+    bool isEngine = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,17 +37,19 @@ public class Playercontroller : MonoBehaviour
         float turnInput = Input.GetAxis("Horizontal");
 
         bool isBraking = Input.GetKey(KeyCode.Space);
-
+        
         float speedFactor = currentSpeed / (maxSpeed / 3.6f);
         // Calculate speed factor based on current speed relative to max speed
 
         float currentTurnSpeed = Mathf.Lerp(minTurnSpeed, baseTurnSpeed, speedFactor);
         // Adjust turn speed based on current movement speed (slower speeds = slower turns)
-
+       
         // Only allow turning when the player is moving
         if (currentSpeed > 0.5f)
         {
             transform.Rotate(Vector3.up * turnInput * currentTurnSpeed * Time.deltaTime);
+           // StartCoroutine(carSound());
+          
             // Rotate the player based on input, turn speed, and frame time
         }
         if (isBraking)
@@ -54,7 +57,22 @@ public class Playercontroller : MonoBehaviour
             currentSpeed = Mathf.MoveTowards(currentSpeed, 0, brakeStrength * Time.deltaTime);
             // Gradually reduce speed to zero based on brake strength
         }
+
+        if (moveInput != 0 && !isBraking && !isEngine)
+        {
+            try { SoundManager.instance.PlayCarSound("engine"); } catch { }
+            isEngine = true;
+        }
+
+        else if (moveInput ==0 && isEngine || isBraking && isEngine)
+        {
+            try { SoundManager.instance.StopCarSound("engine"); } catch { }
+            isEngine= false;
+        }
+
     }
+
+   
     //physics-based calculations work best in fixed update as we want a fixed interval to do calculations
     private void FixedUpdate()
     {
