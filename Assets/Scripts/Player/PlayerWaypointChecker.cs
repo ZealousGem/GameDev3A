@@ -50,7 +50,7 @@ public class PlayerWaypointChecker : MonoBehaviour, PosCounter, Lapcount
     void SetWaypoint() // changes to next waypoint
     {
         if (curNode == null) return;
-        Debug.Log("Waypoint reached");
+      //  Debug.Log("Waypoint reached");
         WayPoint = curNode.pos; // the next nodes location
        
     }
@@ -67,7 +67,7 @@ public class PlayerWaypointChecker : MonoBehaviour, PosCounter, Lapcount
             if (curNode != null)
             {
                 counter++; // updates  the counter to determine what position the car is in
-                Debug.Log("Player: "+counter);
+             //   Debug.Log("Player: "+counter);
                 curNode = curNode.nextNode;
 
                 // moves to nextNode

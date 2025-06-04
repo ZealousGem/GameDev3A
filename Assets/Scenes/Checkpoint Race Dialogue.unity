@@ -1068,6 +1068,7 @@ MonoBehaviour:
   - 1
   info: {fileID: 1076172307}
   Nextscene: Checkpoint Race
+  song: Tutorial
 --- !u!114 &1076172307
 MonoBehaviour:
   m_ObjectHideFlags: 0

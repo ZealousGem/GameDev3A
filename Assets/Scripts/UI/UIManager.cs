@@ -100,6 +100,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+        try { SoundManager.instance.StopSong(); SoundManager.instance.PlaySong("Start"); } catch { }
         if (Time.timeScale == 1f)
         {
             Debug.Log("not forzen");

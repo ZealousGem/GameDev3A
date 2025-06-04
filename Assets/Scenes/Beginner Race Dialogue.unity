@@ -1769,6 +1769,7 @@ MonoBehaviour:
   - 2
   info: {fileID: 1960442747}
   Nextscene: Beginner Race
+  song: Beginner
 --- !u!4 &1960442749
 Transform:
   m_ObjectHideFlags: 0

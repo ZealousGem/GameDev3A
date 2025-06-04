@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     public string[] name;
     public DialogueInfo info;
     public string Nextscene;
+    public string song;
     void Start()
     {
         if (info != null)
@@ -40,6 +41,20 @@ public class DialogueManager : MonoBehaviour
        
     }
 
+    void PlaySong(string key)
+    {
+        try
+        {
+            SoundManager.instance.StopSong();
+            SoundManager.instance.PlaySong(key);
+        }
+
+        catch
+        {
+
+        }
+    }
+
     public IEnumerator Dialogue()
     {
         for (int i = 0; i < name.Length; i++) // this will be made so many different characters can speak to each other
@@ -63,6 +78,7 @@ public class DialogueManager : MonoBehaviour
     public void SkipDialogue() // loads the next scene and allows player to skip diagoue cutscene 
     {
         LevelManager.instance.LoadScene(Nextscene);
+        PlaySong(song);
     }
 
    

@@ -157,6 +157,7 @@ MonoBehaviour:
   - 3
   info: {fileID: 43191537}
   Nextscene: Advanced Race
+  song: Advanced
 --- !u!114 &43191537
 MonoBehaviour:
   m_ObjectHideFlags: 0
