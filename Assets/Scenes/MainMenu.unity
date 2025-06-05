@@ -2536,6 +2536,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: fa716a96045484a44a5b41076f2175ac, type: 3}
   - key: coach
     clip: {fileID: 8300000, guid: 76dac7a4faef8884e94797ebef7c89aa, type: 3}
+  - key: end
+    clip: {fileID: 8300000, guid: e9d0eecd4b413dc4682c9dc71152dcd2, type: 3}
 --- !u!4 &1936767010
 Transform:
   m_ObjectHideFlags: 0

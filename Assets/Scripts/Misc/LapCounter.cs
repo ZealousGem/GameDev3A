@@ -86,6 +86,7 @@ public class LapCounter : MonoBehaviour
                
                 if (playerWaypointChecker.Laps > 3) // if the player is on the final lap a couritine will that will display the final lap UI
                 {
+                   
                     StartCoroutine(ShowFinalLap());
                 }
             }

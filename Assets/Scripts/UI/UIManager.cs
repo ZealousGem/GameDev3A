@@ -78,6 +78,9 @@ public class UIManager : MonoBehaviour
         ShowCanvas(gameFinishedMenu);
         Time.timeScale = 0f;
         try { SoundManager.instance.StopCarSound("engine"); } catch { }
+        SoundManager.instance.StopSong();
+        SoundManager.instance.PlaySound("ui");
+        SoundManager.instance.PlaySong("end");
         gameFinishedText.text = " Race Completed! ";
     }
 
