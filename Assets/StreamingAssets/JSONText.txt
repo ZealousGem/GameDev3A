@@ -7,12 +7,12 @@
   
   
   {"name" :"Coach Walker"},
-  {"name" :"Rival Ryan"},
   {"name" :"Coach Walker"},
   {"name" :"Coach Walker"},
   {"name" :"Rival Ryan"},
   {"name" :"Coach Walker"},
   {"name" :"Coach Walker"},
+  {"name" :"Rival Ryan"},
   {"name" :"Coach Walker"}
   
   
@@ -20,26 +20,26 @@
   ],
    "data" :[
  
-   {"Text": "Not bad Ryan. Good race ...but don't get too arrogant"},
-   {"Text": "Huh Arrogant,  When your as good as me. You have every reason to be confident"},
-   {"Text": "Sigh. yeah, yeah. All it takes is a single mistake, Overconfidence can be a career killer."},
-   {"Text": "Alright, rookie. Before you think you can race on the same level as Ryan, i need to see if you can handle the basics"},
-   {"Text": "Hope your listening, it would be a shame if you failed your first test"},
-   {"Text": "This is a checkpoint race. No opponents, just you against the clock."},
-   {"Text": "Hit all the checkpoints before the time runs out and you're one step closer to being a real race."},
-   {"Text": "Good Luck Rookie. Don't mess up, you only have one shot at this."}
+   {"Text": "Welcome rookie! I'm Coach Walker, here to get you race-ready."},
+   {"Text": "This track's simple-follow and hit every checkpoint. You'll see the glowing green markers."},
+   {"Text": "Miss one and you're off the track."},
+   {"Text": "Hah! And here I thought they'd throw me some real competition. Don't trip over checkpoints, rookie."},
+   {"Text": "Ignore him. Make sure to keep an eye on the clock too."},
+   {"Text": "It will test your skills in speed and precision, so make sure to stay focused."},
+   {"Text": "Just try to keep up. I'll be waiting for you at a real race."},
+   {"Text": "Good Luck Rookie, Step on it and let's see what you've got!"}
    
    ],
 
    "images": [
    
     {"picture": "CoachWalkerFinal.png"},
-    {"picture": "Rival RyanFinal.png"},
     {"picture": "CoachWalkerFinal.png"},
     {"picture": "CoachWalkerFinal.png"},
     {"picture": "Rival RyanFinal.png"},
     {"picture": "CoachWalkerFinal.png"},
     {"picture": "CoachWalkerFinal.png"},
+    {"picture": "Rival RyanFinal.png"},
      {"picture": "CoachWalkerFinal.png"}
    
    ]
@@ -52,20 +52,23 @@
   
   
   {"name" :"Coach Walker"},
+  {"name" :"Coach Walker"},
   {"name" :"Rival Ryan"},
   {"name" :"Coach Walker"},
-  {"name" :"Rival Ryan"}
-  
+  {"name" :"Rival Ryan"},
+  {"name" :"Coach Walker"}
   
   
   
   ],
    "data" :[
  
-   {"Text": "You did well in the checkpoint race. Now it's time to see if you can compete against other racers."},
-   {"Text": "They better. Otherwise, what's the point?"},
-   {"Text": "Relax, Ryan. The goal is to finish strong and learn. No need to prove anything... yet."},
-   {"Text": "Yeah, but if they do want to prove something, they better be fast."}
+   {"Text": "Good Job, you handled the basic quite well-but this track's packed with some competition."},
+   {"Text": "It's not just about speed now. You'll need control, awareness and some guts to weave through traffic."},
+   {"Text": "Hope you've got more training wheels today. These racers don't mess around-and neither do I"},
+   {"Text": "Sigh, Okay Ryan. he is correct, Ryan is fast but reckless. Make sure to focous on your line and timing."},
+   {"Text": "Try to stay out of my rearview mirror, chump. That's the best seat you'll get today."},
+   {"Text": "Don't take the bait. You've got this, keep your eyes on the road and try your very best."}
 
    
    ],
@@ -73,9 +76,11 @@
    "images": [
    
     {"picture": "CoachWalkerFinal.png"},
+    {"picture": "CoachWalkerFinal.png"},
     {"picture": "Rival RyanFinal.png"},
     {"picture": "CoachWalkerFinal.png"},
-    {"picture": "Rival RyanFinal.png"}
+    {"picture": "Rival RyanFinal.png"},
+    {"picture": "CoachWalkerFinal.png"}
     
    
    ]
@@ -88,9 +93,11 @@
   
   
   {"name" :"Coach Walker"},
+  {"name" :"Coach Walker"},
   {"name" :"Rival Ryan"},
   {"name" :"Coach Walker"},
-  {"name" :"Rival Ryan"}
+  {"name" :"Rival Ryan"},
+  {"name" :"Coach Walker"}
   
   
   
@@ -98,10 +105,12 @@
   ],
    "data" :[
  
-   {"Text": "Alright, rookie. You handled the beginner race well. Now it's time for the real challenge."},
-   {"Text": "Yeah, yeah. But can they handle split routes. That's where real racers prove themselves."},
-   {"Text": "The track branches off in places, so you'll need to pick your lines carefully. No second chances."},
-   {"Text": "So... no pressure. Hahahaha"}
+   {"Text": "This is it, the final course. It's got forks, splits with many different shortcuts."},
+   {"Text": "Sometimes the fastest way isn't the obvious one. Keep youe eyes open."},
+   {"Text": "Hope you brought a map, rookie. You'll need it."},
+   {"Text": "Choose wisely at split roads. Take risks if you're confident, or stick to the safe route. It's your call."},
+   {"Text": "Try not to get lost back there!"},
+   {"Text": "You've come a long way, now finish strong!"}
 
    
    ],
@@ -109,9 +118,11 @@
    "images": [
    
     {"picture": "CoachWalkerFinal.png"},
+    {"picture": "CoachWalkerFinal.png"},
     {"picture": "Rival RyanFinal.png"},
     {"picture": "CoachWalkerFinal.png"},
-    {"picture": "Rival RyanFinal.png"}
+    {"picture": "Rival RyanFinal.png"},
+    {"picture": "CoachWalkerFinal.png"}
     
    
    ]
