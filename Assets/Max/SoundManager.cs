@@ -123,6 +123,17 @@ public class SoundManager : MonoBehaviour
         }
        
     }
+
+    public void ManageMusicVolume(float vol)
+    {
+        musicSource.volume = vol;
+    }
+
+    public void ManageSoundVolume(float vol)
+    {
+        audioSource.volume = vol;
+        carSource.volume = vol - 0.2f;
+    }
     // Start is called before the first frame update
     void Start()
     {

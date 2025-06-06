@@ -6,6 +6,8 @@ public class MainMenuManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public GameObject mainMenu;
+    public GameObject seetingsmenu;
     
     public void Tutorial() // opens the check point dialogue scene
     {
@@ -41,5 +43,17 @@ public class MainMenuManager : MonoBehaviour
     {
         SoundManager.instance.PlaySound("ui");
         LevelManager.instance.LoadMainMenu();
+    }
+
+    public void SettingsMenu()
+    {
+        mainMenu.SetActive(false);
+        seetingsmenu.SetActive(true);
+    }
+
+    public void StartMenu()
+    {
+        mainMenu.SetActive(true);
+        seetingsmenu.SetActive(false);
     }
 }
