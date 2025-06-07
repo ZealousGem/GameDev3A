@@ -6,7 +6,7 @@ public class CRacer : AIRacer
 {
     public CRacer()
     {
-        RacerName = "Police";
+        RacerName = "Rival";
         Speed = 41;
         Brake = 21;
 

@@ -146,13 +146,13 @@ public class DialogueSystem : MonoBehaviour
         login.Add(sentence);
         if (CharName == "Rival Ryan")
         {
-            SoundManager.instance.PlaySound("ryan");
+            try { SoundManager.instance.PlaySound("ryan"); } catch { } 
             
         }
 
         else if (CharName == "Coach Walker")
         {
-            SoundManager.instance.PlaySound("coach");
+            try { SoundManager.instance.PlaySound("coach"); } catch { } 
         }
         counter += 1; // keeps track fo the front position element in the queue
        

@@ -12,7 +12,7 @@ public class AIRacerFactory : RacerFactory
     // Pool of suffixes used to make each racer's name unique and identifiable.
     private readonly string[] nameSuffixes =
     {
-        "Alpha","Turbo","Viper", "Dash","Omega","Thunder"
+        "Reed","Turbo","Viper", "Dash","Ryan","Thunder"
     };
 
     //An array of GameObjects representing racer models
