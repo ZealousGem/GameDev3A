@@ -47,12 +47,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void SettingsMenu()
     {
+        SoundManager.instance.PlaySound("ui");
         mainMenu.SetActive(false);
         seetingsmenu.SetActive(true);
     }
 
     public void StartMenu()
     {
+        SoundManager.instance.PlaySound("ui");
         mainMenu.SetActive(true);
         seetingsmenu.SetActive(false);
     }

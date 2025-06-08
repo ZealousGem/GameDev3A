@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     private bool isPaused = false;
  
     public TextMeshProUGUI gameFinishedText;
+    public string sound;
 
 
     // Start is called before the first frame update
@@ -95,6 +96,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        try { SoundManager.instance.StopSong(); SoundManager.instance.PlaySong(sound); } catch { }
 
     }
     public void QuitGame()

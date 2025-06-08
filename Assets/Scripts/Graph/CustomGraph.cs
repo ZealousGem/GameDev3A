@@ -213,4 +213,16 @@ public class CustomGraph
 
         return copy; // returns the copied graph for the ai to use 
     }
+
+    public void DrawEdges() // a debug that shows all the edges between the nodes and shows the possible paths the ai can go to 
+    {
+        foreach (Edge e in sides)
+        {
+         Vector3 start = e.startNode.findWaypoint().transform.position;
+            Vector3 end = e.endNode.findWaypoint().transform.position;
+
+            Debug.DrawLine(start, end, Color.green, 5f);
+
+        }
+    }
 }

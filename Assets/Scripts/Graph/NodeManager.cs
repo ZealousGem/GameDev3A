@@ -53,4 +53,13 @@ public class NodeManager : MonoBehaviour
         CreatePath();
       
     }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.L)) // debug to check pathing
+        {
+            graph.DrawEdges();
+        }
+       
+    }
 }
