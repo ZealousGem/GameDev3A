@@ -38,7 +38,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
         Laps = 0;
         agent = GetComponent<NavMeshAgent>();
         manager = FindObjectOfType<NodeManager>();
-        custom = manager.graph.Copy();
+        custom = manager.graph.Copy(); // uses a copy of the graph to use it safely so it doesn't overide the node
        // MakePath();
 
         wayPointManager = FindObjectOfType<WayPointManager>();
@@ -47,23 +47,20 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
             curNode = wayPointManager.Waypoints.NodeAcess(0); // sets waypointnode to the head node in the linkedlist 
              // actviates movement for ai to head to waypointnodes position 
         }
-          MakePath();
-        SetWaypoint();
+          MakePath(); // determines the path from the start node in the point list
+        SetWaypoint(); // sets the waypoint for the leaderboard linked list 
         
 
     }
 
-    void MakePath()
+    void MakePath() // sets the path for the ai to use 
     {
 
         GameObject startLine = closetNodePoint();
         GameObject FinishLine = nextWayPoint(startLine);
 
-      //  Debug.Log("Closest Start Node: " + startLine?.name);
-      //  Debug.Log("Next Waypoint Node: " + FinishLine?.name);
-
-       // Debug.Log($"Start: {startLine?.name}, End: {FinishLine?.name}");
-        if (custom.AStar(startLine, FinishLine, this.gameObject))
+      
+        if (custom.AStar(startLine, FinishLine, this.gameObject)) // uses astar heaustric function from graph adt to determine the best path between the two nodes 
         {
             path = custom.getPath();
             agent.SetDestination(path[0].findWaypoint().transform.position);
@@ -79,31 +76,31 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
         DistancefromWaypoint = Vector3.Distance(transform.position, WayPoint);
     }
 
-    void moveCar()
+    void moveCar() // moves the car through the points if a path has been found 
     {
         GameObject curNode;
-        if (path == null || path.Count == 0)
+        if (path == null || path.Count == 0) // will return if no path is found 
         {
             return;
         }
 
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance) // will kepp moving until nav agent has reached inteneded destination 
         {
              curIndex++;
-            if (curIndex >= path.Count)
+            if (curIndex >= path.Count) // will use an index to determine what node it is on in the path list
             {
                 GameObject startLine = path[path.Count - 1].findWaypoint();
                 GameObject FinishLine = nextWayPoint(startLine);
-               // Debug.Log(gameObject.name + " // " + startLine + " // " + FinishLine);
-                if (custom.AStar(startLine, FinishLine, this.gameObject))
+              
+                if (custom.AStar(startLine, FinishLine, this.gameObject)) // will use the astar fucntion to determine the best path to the endpoint 
                 {
-                    path= custom.getPath();
+                    path= custom.getPath(); // retirves the calculated path
                     curIndex = 0;
-                    if (path != null && path.Count > 0)
+                    if (path != null && path.Count > 0) 
                     {
                        // Debug.Log(gameObject.name +" Start Point" + path[0].findWaypoint());
                         agent.SetDestination(path[0].findWaypoint().transform.position);
-                        curNode = path[curIndex].findWaypoint();
+                        curNode = path[curIndex].findWaypoint(); // sets current node in the elemnt in the path list 
                         if (curNode.CompareTag("Checkpoint"))
                         {
                             curSpeed = BrakeSpeed;
@@ -116,9 +113,9 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
                     }
                 }
               
-            } 
+            }
 
-           else
+            else // if the ai has reached the final element in the path list, it will reset the index to 0 making a loop 
             {
                // Debug.Log(gameObject.name +" End Point" + path[curIndex].findWaypoint());
                 agent.SetDestination(path[curIndex].findWaypoint().transform.position);
@@ -144,7 +141,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
         }
     }
 
-    GameObject nextWayPoint(GameObject cur)
+    GameObject nextWayPoint(GameObject cur) // determines the end waypoint
     {
         int element = System.Array.IndexOf(manager.waypoints, cur);
         if (element < 0) { //Debug.Log(gameObject.name+ " " + manager.waypoints[0]); 
@@ -156,24 +153,24 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
 
     }
 
-    GameObject closetNodePoint()
+    GameObject closetNodePoint() // this determines which node the ai is located so it can be used to calcualte the path from the start node 
     {
         GameObject closest = null;
         float mindist = Mathf.Infinity;
         for (int i = 0; i < manager.waypoints.Length; i++)
         {
             float dist = Vector3.Distance(transform.position, manager.waypoints[i].transform.position);
-            if (dist < mindist)
+            if (dist < mindist) // checks if the distance has an end or a limit 
             {
                 mindist = dist;
                 closest = manager.waypoints[i];
             }
         }
-        Debug.Log(gameObject.name + " "+closest);
+      //  Debug.Log(gameObject.name + " "+closest);
         return closest;
     }
 
-    GameObject farthestPoint()
+    GameObject farthestPoint() // useless method 
     {
         GameObject farwaway = null;
         float mindist = -Mathf.Infinity;
@@ -190,7 +187,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
         return farwaway;
     }
 
-    public void NextNode()
+    public void NextNode() // this is used to count hhow many points the ai has past thourgh to determine it's position in the leaderboard 
     {
 
         if (DistancefromWaypoint < WaypointBorder)
@@ -222,7 +219,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
 
     }
 
-    void SetWaypoint()
+    void SetWaypoint() // sets to new waypoint wants ai has reached the previous one 
     {
         if (curNode == null) return;
         WayPoint = curNode.pos;
