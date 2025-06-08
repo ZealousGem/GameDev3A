@@ -9,18 +9,18 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
 
     NavMeshAgent agent;
 
-    NodeManager manager;
+    NodeManager manager; // 
     WayPointManager wayPointManager;
-    WayPointNode curNode;
+    WayPointNode curNode; // current linked list waypoint ai is on
     public float Topspeed;
     public float BrakeSpeed;
     public float curSpeed;
-    public List<Node> path;
-    int curIndex = 0;
+    public List<Node> path; // path that ai will use to lap the track 
+    int curIndex = 0; 
     Vector3 WayPoint;
     CustomGraph custom;
     public string Carname;
-    public float WaypointBorder;
+    public float WaypointBorder; // the radius the waypoint needs to be to go to the next node in the linked list 
 
 
     [HideInInspector]
@@ -89,14 +89,14 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
              curIndex++;
             if (curIndex >= path.Count) // will use an index to determine what node it is on in the path list
             {
-                GameObject startLine = path[path.Count - 1].findWaypoint();
-                GameObject FinishLine = nextWayPoint(startLine);
+                GameObject startLine = path[path.Count - 1].findWaypoint(); // starting point of node
+                GameObject FinishLine = nextWayPoint(startLine); // find the next waypoint
               
                 if (custom.AStar(startLine, FinishLine, this.gameObject)) // will use the astar fucntion to determine the best path to the endpoint 
                 {
                     path= custom.getPath(); // retirves the calculated path
                     curIndex = 0;
-                    if (path != null && path.Count > 0) 
+                    if (path != null && path.Count > 0)  // will check if the size of the path is not null and is less than 0
                     {
                        // Debug.Log(gameObject.name +" Start Point" + path[0].findWaypoint());
                         agent.SetDestination(path[0].findWaypoint().transform.position);
@@ -120,7 +120,7 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
                // Debug.Log(gameObject.name +" End Point" + path[curIndex].findWaypoint());
                 agent.SetDestination(path[curIndex].findWaypoint().transform.position);
                 curNode = path[curIndex].findWaypoint();
-                if (curNode.CompareTag("Checkpoint"))
+                if (curNode.CompareTag("Checkpoint")) // will check the current node tag to see if car needs to move faster or not 
                 {
                     curSpeed = BrakeSpeed;
                 }
@@ -143,12 +143,12 @@ public class GraphRacingAI : MonoBehaviour, PosCounter, Lapcount
 
     GameObject nextWayPoint(GameObject cur) // determines the end waypoint
     {
-        int element = System.Array.IndexOf(manager.waypoints, cur);
-        if (element < 0) { //Debug.Log(gameObject.name+ " " + manager.waypoints[0]); 
-            return manager.waypoints[0];  }
+        int element = System.Array.IndexOf(manager.waypoints, cur); // finds way start waypoint index 
+        if (element < 0) { 
+            return manager.waypoints[0];  } // if the index is less thant zero it will return the first element in the waypoint list 
                 
-        int nextElement = (element +1) % manager.waypoints.Length;
-       // Debug.Log(gameObject.name+ " " +manager.waypoints[nextElement]);
+        int nextElement = (element +1) % manager.waypoints.Length; // will return the next element of the waypoint in the list 
+      
         return manager.waypoints[nextElement];
 
     }

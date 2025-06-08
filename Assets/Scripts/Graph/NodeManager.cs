@@ -8,35 +8,24 @@ public class NodeManager : MonoBehaviour
     // Start is called before the first frame update
 
 
-    public  GameObject[] waypoints;
-    public Links[] links; 
-    public CustomGraph graph;
+    public  GameObject[] waypoints; // waypoints contained in the track
+    public Links[] links; // waypoints that will have edges between each other
+    public CustomGraph graph; // graph that will be used to calcualte the path
 
-    
-    
-    void Start()
-    {
-        
-    }
+ 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void CreatePath()
+    void CreatePath() // instaties the waypoints and creates the edges 
     {
         if (waypoints.Length > 0)
         {
-            for (int i = 0; i < waypoints.Length; i++)
+            for (int i = 0; i < waypoints.Length; i++) // adds waypoints into the point node list 
             {
                 GameObject obj = waypoints[i];
                 graph.AddNode(obj);
-              //  Debug.Log("Node Added: " + obj.name);
+             
             }
 
-            for (int i = 0; i < links.Length; i++)
+            for (int i = 0; i < links.Length; i++) // adds the linked waypoints to create a edge path 
             {
                 graph.AddEdges(links[i].firstnode, links[i].secondnode);
               /*  if (links[i].direction == Links.dir.BI)
@@ -48,7 +37,7 @@ public class NodeManager : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
+    void OnDrawGizmos() // a debug that shows the waypoints located in the track 
     {
         Gizmos.color = Color.green;
         foreach (GameObject wp in waypoints)

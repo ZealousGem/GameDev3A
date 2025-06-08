@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SoundManager : MonoBehaviour
 {
 
-    public static SoundManager instance;
+    public static SoundManager instance; // makes the SoundManager a singleton
 
-    private AudioSource audioSource;
+    private AudioSource audioSource; // audio source that will be used to play the sound from key in the hash map 
     private AudioSource musicSource;
     private AudioSource carSource;
-    private HashMap<string, AudioClip> soundMap;
+    private HashMap<string, AudioClip> soundMap; // has map of all the contained sounds key name and value in the map 
 
 
     [System.Serializable]
-    public struct SoundEntry
+    public struct SoundEntry // a struct that will be used to instaite the string name of the clip and clip itself into the hash map
     {
         public string key;
         public AudioClip clip;
@@ -22,7 +23,7 @@ public class SoundManager : MonoBehaviour
 
     public SoundEntry[] sounds;
 
-    private void Awake()
+    private void Awake() // destorys the object and creates a new everytime a scene is trnaistioned 
     {
         if (instance == null)
         {
@@ -37,19 +38,19 @@ public class SoundManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        audioSource=gameObject.AddComponent<AudioSource>();
+        audioSource=gameObject.AddComponent<AudioSource>(); // creates an audio source for the keys to be played 
         musicSource=gameObject.AddComponent<AudioSource>();
         carSource=gameObject.AddComponent<AudioSource>();
         musicSource.volume = 0.5f;
         soundMap = new HashMap<string,AudioClip>();
 
-        foreach (var sound in sounds)
+        foreach (var sound in sounds) // adds all the string name as the key and the clip as the value into the hash map 
         {
             soundMap.Put(sound.key, sound.clip);
         }
     }
 
-    public void PlaySound(string key)
+    public void PlaySound(string key) // plays the auio by finding the key 
     {
         try
         {
@@ -58,11 +59,10 @@ public class SoundManager : MonoBehaviour
         }
         catch (KeyNotFoundException)
         {
-
         }
     }
 
-    public void PlayCarSound(string key)
+    public void PlayCarSound(string key)//plays the auio by finding the key 
     {
         try
         {
@@ -76,7 +76,7 @@ public class SoundManager : MonoBehaviour
         }   
     }
 
-    public void StopCarSound(string key)
+    public void StopCarSound(string key)// will stop playing the audio by findind the key in the hash map 
     {
         try
         {
@@ -94,7 +94,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySong(string key)
+    public void PlaySong(string key) // plays the music by finding the key in the hash map 
     {
         try
         {
@@ -109,7 +109,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void StopSong()
+    public void StopSong() // will stop playing the audio by findind the key in the hash map 
     {
         try
         {
@@ -124,12 +124,12 @@ public class SoundManager : MonoBehaviour
        
     }
 
-    public void ManageMusicVolume(float vol)
+    public void ManageMusicVolume(float vol) // manages the vloume of the audio source 
     {
         musicSource.volume = vol;
     }
 
-    public void ManageSoundVolume(float vol)
+    public void ManageSoundVolume(float vol) // manages the vloume of the audio source 
     {
         audioSource.volume = vol;
         carSource.volume = vol - 0.2f;
